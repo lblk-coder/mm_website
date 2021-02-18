@@ -43,7 +43,8 @@
             {{ projection.film.real }} <br>
             {{ projection.film.duree }} minutes <br>
             {{ projection.film.synopsis }} <br>
-            Animation : {{ projection.animation }}
+            Animation : {{ projection.animation }} <br>
+            Tarif : {% if projection.tarif %} {{ projection.tarif }} {% endif %} €
         </p>
         </div>
     {% endfor %}

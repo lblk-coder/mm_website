@@ -4,9 +4,9 @@ from django.contrib import admin
 from seances import views
 
 urlpatterns = [
-    url(r'^$', views.home),
+    url(r'^$', views.home, name='home'),
     url(r'^seances/', include(('seances.urls', 'seances'), namespace='seances')),
-    url(r'^admin/', admin.site.urls),
+    url(r'^thelmaetlouise/', admin.site.urls),
 ]
 
 if settings.DEBUG:

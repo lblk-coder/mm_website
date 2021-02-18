@@ -15,9 +15,9 @@
 Séances de ce film : <br>
 <ul>
 {% for projection in film.projection_set.all %}
-<li>le {{ projection.seance.date }} à {{ projection.seance.lieu }} {{ projection.heure }}
+<li>le {{ projection.seance.date }} à {{ projection.seance.lieu }} {{ projection.heure }}. Tarif : {% if projection.tarif %} {{ projection.tarif }} {% endif %} € <br>
 {% if projection.seance.plein_air %}
-!!! Séance en plein-air !!!
+!!! Séance en plein-air !!! <br>
 {% endif %}
 </li>
 {% endfor %}
