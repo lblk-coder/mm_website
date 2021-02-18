@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+import datetime
+from django.core.paginator import Paginator
 from .models import Film, Seance, Projection
 
 def home(request):

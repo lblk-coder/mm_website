@@ -5,7 +5,7 @@ from seances import views
 
 urlpatterns = [
     url(r'^$', views.home),
-    url(r'^seances/', include('seances.urls')),
+    url(r'^seances/', include(('seances.urls', 'seances'), namespace='seances')),
     url(r'^admin/', admin.site.urls),
 ]
 
