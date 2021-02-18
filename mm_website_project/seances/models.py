@@ -35,4 +35,4 @@ class Projection(models.Model):
 
     def __str__(self):
         msg = "Projection de "+str(self.film)+" à "+str(self.seance.lieu)+" le "+str(self.seance.date)+" à "+str(self.heure)
-        return self.titre
+        return msg
