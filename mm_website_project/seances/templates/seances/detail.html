@@ -1,0 +1,30 @@
+{% extends 'seances/base.html' %}
+
+{% block content %}
+<hr>
+<h1 class="intro-text text-center">{{ film.titre }}</h1>
+<hr class="detail-separator">
+<div class="col-md-6">
+<img src="{{ film.picture }}" alt="{{ film.titre }}" class="img-responsive">
+</div>
+<div class="col-md-6">
+<div style="margin-bottom:45px">
+<p> {{ film.real }} <br>
+{{ film.duree }} minutes <br>
+{{ film.synopsis }} <br>
+Séances de ce film : <br>
+<ul>
+{% for projection in film.projection_set.all %}
+<li>le {{ projection.seance.date }} à {{ projection.seance.lieu }} {{ projection.heure }}
+{% if projection.seance.plein_air %}
+!!! Séance en plein-air !!!
+{% endif %}
+</li>
+{% endfor %}
+</ul>
+</p>
+</div>
+</div>
+
+
+{% endblock %}

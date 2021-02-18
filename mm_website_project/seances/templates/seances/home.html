@@ -20,16 +20,16 @@
 {% for seance in page_obj %}
         <div class="col-sm-2 text-center">
             <div class="sliderchep">
-                {% for film in seance.films.all %}
-                    <a href="{% url 'seances:detail' film_id=film.id %}">
-                        <img class="imgchep" src="{{ film.picture }}" />
+                {% for projection in seance.projection_set.all %}
+                    <a href="{% url 'seances:detail' film_id=projection.film.id %}">
+                        <img class="imgchep" src="{{ projection.film.picture }}" />
                     <a/>
                 {% endfor %}
             </div>
             <h3><a href="">{{ seance.date }}</a></h3>
-            <h4><a href="">{{ seance.location }}</a></h4>
-            {% for film in seance.films.all %}
-            <h6><a href="">{{ film.title }}</a></h6>
+            <h4><a href="">{{ seance.lieu }}</a></h4>
+            {% for projection in seance.projection_set.all %}
+                <h6><a href="{% url 'seances:detail' film_id=projection.film.id %}">{{ projection.film.titre }}</a></h6>
             {% endfor %}
         </div>
 {% endfor %}
