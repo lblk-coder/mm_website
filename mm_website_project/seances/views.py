@@ -14,7 +14,7 @@ def home(request):
     page_obj = paginator.page(request.GET.get('page', '1'))
     #  la section ci-dessous est à retravailler pour mettre un catalogue proprement
     try:  # TODO mettre possibilité d'uploader un catalogue ici... il faut qu'on voit sa couverture... C'EST CHAUD !!!!
-        catalogue_img = Film.objects.get(title="catalogue").picture  # it bugs here when I run a unittest, maybe it comes from the fact that it is a static file...
+        catalogue_img = Film.objects.get(titre="catalogue").picture  # it bugs here when I run a unittest, maybe it comes from the fact that it is a static file...
     except:
         catalogue_img = ''
         pass
@@ -39,23 +39,27 @@ def listing(request): #  this view returns all the screenings in the dbase + res
             films = str(form.cleaned_data['Film'])
             films = films[2:-2]
             if lieu and date and films:  # i did not find a better way of coding this filter mechanism, TODO find a better way with less code!
-                films = Film.objects.get(title=films)
-                seances = Seance.objects.filter(location=lieu, date=date, films=films)
+                films = Film.objects.get(titre=films)
+                projections = Projection.objects.get(film=films)
+                seances = Seance.objects.filter(lieu=lieu, date=date, projection=projections)
             if lieu and date and not films:  # 2
-                seances = Seance.objects.filter(location=lieu, date=date)
+                seances = Seance.objects.filter(lieu=lieu, date=date)
             if lieu and films and not date:  # 2
-                films = Film.objects.get(title=films)
-                seances = Seance.objects.filter(location=lieu, films=films)
+                films = Film.objects.get(titre=films)
+                projections = Projection.objects.get(film=films)
+                seances = Seance.objects.filter(lieu=lieu, projection=projections)
             if date and films and not lieu:  # 2
-                films = Film.objects.get(title=films)
-                seances = Seance.objects.filter(films=films, date=date)
+                films = Film.objects.get(titre=films)
+                projections = Projection.objects.get(film=films)
+                seances = Seance.objects.filter(date=date, projection=projections)
             if date and not films and not lieu:
                 seances = Seance.objects.filter(date=date)
             if films and not date and not lieu:
-                films = Film.objects.get(title=films)
-                seances = Seance.objects.filter(films=films)
+                films = Film.objects.get(titre=films)
+                projections = Projection.objects.get(film=films)
+                seances = Seance.objects.filter(projection=projections)
             if lieu and not films and not date:
-                seances = Seance.objects.filter(location=lieu)
+                seances = Seance.objects.filter(lieu=lieu)
             if len(seances) == 0:
                 message = "Désolé, il n'existe aucune séance correspondant à ces critères !"
             else:

@@ -13,7 +13,8 @@ class FormSeances(forms.Form):  #  this form is used to filter the seances on th
             date_dict.append((seance.date, seance.date))
     for film in Film.objects.all():
         if (film.titre, film.titre) not in film_dict:
-            film_dict.append((film.titre, film.titre))
+            if len(film.projection_set.all()) != 0:
+                film_dict.append((film.titre, film.titre))
     location_dict.sort()
     date_dict.sort()
     film_dict.sort()
