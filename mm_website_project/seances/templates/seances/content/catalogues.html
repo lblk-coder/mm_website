@@ -3,6 +3,6 @@
 {% block content %}
 <p>Les catalogues disponibles :</p>
 {% for catalogue in catalogues %}
-<a href="{{ catalogue.catalogue }}" download>{{ catalogue.titre }}</a>
+<a href="{{ catalogue.catalogue }}" download>{{ catalogue.titre }}</a><br>
 {% endfor %}
 {% endblock %}

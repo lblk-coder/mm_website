@@ -45,6 +45,7 @@ class Catalogue(models.Model):
     couverture = models.CharField(max_length=500, blank=True, default='')
     home_page = models.BooleanField(default=False)  # this field decides which Catalogue will be
     # presented on the home page of the site. See save() method override below.
+    creation_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.titre

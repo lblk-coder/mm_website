@@ -75,3 +75,45 @@ def detail(request, film_id):  #  this view shows every parameters a particular 
         'projections': projections,
     }
     return render(request, 'seances/detail.html', context)
+
+def content(request, value):
+    if int(value) == 0:
+        return render(request, 'seances/content/asso.html')
+    elif int(value) == 1:
+        return render(request, 'seances/content/equipe.html')
+    elif int(value) == 2:
+        return render(request, 'seances/content/conseil.html')
+    elif int(value) == 3:
+        return render(request, 'seances/content/partenaires.html')
+    elif int(value) == 4:
+        return render(request, 'seances/content/contact.html')
+    elif int(value) == 5:
+        return render(request, 'seances/content/emploi.html')
+    elif int(value) == 6:
+        return render(request, 'seances/content/rejoindre.html')
+    elif int(value) == 7:
+        catalogues = Catalogue.objects.all()
+        context = {
+            'catalogues' : catalogues
+        }
+        return render(request, 'seances/content/catalogues.html', context)
+    elif int(value) == 8:
+        return render(request, 'seances/content/plein-air.html')
+    elif int(value) == 9:
+        return render(request, 'seances/content/seniors.html')
+    elif int(value) == 10:
+        return render(request, 'seances/content/patrimoine.html')
+    elif int(value) == 11:
+        return render(request, 'seances/content/spectacles.html')
+    elif int(value) == 12:
+        return render(request, 'seances/content/seances-militantes.html')
+    elif int(value) == 13:
+        return render(request, 'seances/content/louise.html')
+    elif int(value) == 14:
+        return render(request, 'seances/content/scolaires.html')
+    elif int(value) == 15:
+        return render(request, 'seances/content/ecole-college.html')
+    elif int(value) == 16:
+        return render(request, 'seances/content/lyceens-apprentis.html')
+    elif int(value) == 17:
+        return render(request, 'seances/content/festival.html')
