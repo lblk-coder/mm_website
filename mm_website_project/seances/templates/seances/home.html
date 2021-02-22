@@ -11,11 +11,13 @@
 
         <div class="col-sm-2" id="catalogue">
             <div class="sliderchep">
-                    <a href="catalogue_du_mois.pdf"> <!--insérer lien avalide de dl du catalogue -->
-                        <img class="imgchep" src="{{ catalogue_img }}" />
+                    <a href="{{ catalogue_link }}" download> <!--insérer lien avalide de dl du catalogue -->
+                        <img class="imgchep" src="{{ catalogue_cover }}" />
                     <a/>
             </div>
-            <h3>Catalogue du mois</h3>
+            <a href="{{ catalogue_link }}" download>
+                <h3>Catalogue du mois</h3>
+            </a>
         </div>
 {% for seance in page_obj %}
         <div class="col-sm-2 text-center">

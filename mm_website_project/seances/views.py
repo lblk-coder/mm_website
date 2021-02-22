@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 import datetime
 from django.core.paginator import Paginator
-from .models import Film, Seance, Projection
+from .models import Film, Seance, Projection, Catalogue
 from .forms import FormSeances
 
 def home(request):
@@ -12,17 +12,13 @@ def home(request):
             seances.append(seance)  # si séance pas passée, on l'ajoute à la liste
     paginator = Paginator(seances, 5)  # pour ne présenter que 5 séances max sur la page d'accueil
     page_obj = paginator.page(request.GET.get('page', '1'))
-    #  la section ci-dessous est à retravailler pour mettre un catalogue proprement
-    try:  # TODO mettre possibilité d'uploader un catalogue ici... il faut qu'on voit sa couverture... C'EST CHAUD !!!!
-        catalogue_img = Film.objects.get(titre="catalogue").picture  # it bugs here when I run a unittest, maybe it comes from the fact that it is a static file...
-    except:
-        catalogue_img = ''
-        pass
-    #  fin de la section à retravailler
+    catalogue_cover = Catalogue.objects.get(home_page=True).couverture
+    catalogue_link = Catalogue.objects.get(home_page=True).catalogue
     context = {
         'seances' : seances,
         'page_obj' : page_obj,
-        'catalogue_img' : catalogue_img,
+        'catalogue_cover' : catalogue_cover,
+        'catalogue_link' : catalogue_link,
     }
     return render(request, 'seances/home.html', context)
 
@@ -33,32 +29,21 @@ def listing(request): #  this view returns all the screenings in the dbase + res
         form = FormSeances(request.GET)
         if form.is_valid():
             lieu = str(form.cleaned_data['Lieu'])  #getting the data form the form, converting it in str
-            lieu = lieu[2:-2]  #keeping only the part of the string we want
             date = str(form.cleaned_data['Date'])
-            date = date[2:-2]
-            films = str(form.cleaned_data['Film'])
-            films = films[2:-2]
-            if lieu and date and films:  # i did not find a better way of coding this filter mechanism, TODO find a better way with less code!
-                films = Film.objects.get(titre=films)
-                projections = Projection.objects.get(film=films)
-                seances = Seance.objects.filter(lieu=lieu, date=date, projection=projections)
-            if lieu and date and not films:  # 2
+            film = str(form.cleaned_data['Film'])
+            if lieu and date and film:  # i did not find a better way of coding this filter mechanism, TODO find a better way with less code!
+                seances = Seance.objects.filter(lieu=lieu, date=date, projection__film__titre=film)
+            if lieu and date and not film:  # 2
                 seances = Seance.objects.filter(lieu=lieu, date=date)
-            if lieu and films and not date:  # 2
-                films = Film.objects.get(titre=films)
-                projections = Projection.objects.get(film=films)
-                seances = Seance.objects.filter(lieu=lieu, projection=projections)
-            if date and films and not lieu:  # 2
-                films = Film.objects.get(titre=films)
-                projections = Projection.objects.get(film=films)
-                seances = Seance.objects.filter(date=date, projection=projections)
-            if date and not films and not lieu:
+            if lieu and film and not date:  # 2
+                seances = Seance.objects.filter(lieu=lieu, projection__film__titre=film)
+            if date and film and not lieu:  # 2
+                seances = Seance.objects.filter(date=date, projection__film__titre=film)
+            if date and not film and not lieu:
                 seances = Seance.objects.filter(date=date)
-            if films and not date and not lieu:
-                films = Film.objects.get(titre=films)
-                projections = Projection.objects.get(film=films)
-                seances = Seance.objects.filter(projection=projections)
-            if lieu and not films and not date:
+            if film and not date and not lieu:
+                seances = Seance.objects.filter(projection__film__titre=film)
+            if lieu and not film and not date:
                 seances = Seance.objects.filter(lieu=lieu)
             if len(seances) == 0:
                 message = "Désolé, il n'existe aucune séance correspondant à ces critères !"
@@ -74,10 +59,10 @@ def listing(request): #  this view returns all the screenings in the dbase + res
     else:
         form = FormSeances()
         seances = Seance.objects.all().order_by('date')
-        films = Film.objects.all().order_by('titre')
+        film = Film.objects.all().order_by('titre')
         context = {
         'seances' : seances,
-        'films' : films,
+        'film' : film,
         'form' : form,
     }
         return render(request, 'seances/listing.html', context)

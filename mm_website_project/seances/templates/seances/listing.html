@@ -40,11 +40,16 @@
             </a>
         </h3>
         <p>
-            {{ projection.film.real }} <br>
-            {{ projection.film.duree }} minutes <br>
-            {{ projection.film.synopsis }} <br>
-            Animation : {{ projection.animation }} <br>
-            Tarif : {% if projection.tarif %} {{ projection.tarif }} {% endif %} €
+            {% if projection.film.real %} De {{ projection.film.real }} <br> {% endif %}
+            {% if projection.film.acteurs %} Avec {{ projection.film.acteurs }} <br> {% endif %}
+            {% if projection.film.genre %} {{ projection.film.genre }},{% endif %}
+            {% if projection.film.annee %} {{ projection.film.annee }},{% endif %}
+            {% if projection.film.pays %} {{ projection.film.pays }},{% endif %}
+            {% if projection.film.duree %} {{ projection.film.duree }} minutes <br> {% endif %}
+            {% if projection.film.age %} À partir de {{ projection.film.age }} ans <br> {% endif %}
+            {% if projection.film.synopsis %} {{ projection.film.synopsis }} <br> {% endif %}
+            {% if projection.animation %} Animation : {{ projection.animation }} <br> {% endif %}
+            {% if projection.tarif %} Tarif :  {{ projection.tarif }} € <br> {% endif %}
         </p>
         </div>
     {% endfor %}
