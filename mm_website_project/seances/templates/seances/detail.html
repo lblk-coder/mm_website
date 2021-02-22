@@ -9,15 +9,28 @@
 </div>
 <div class="col-md-6">
 <div style="margin-bottom:45px">
-<p> {{ film.real }} <br>
-{{ film.duree }} minutes <br>
-{{ film.synopsis }} <br>
+{% if film.real %} <p> De {{ film.real }} <br> {% endif %}
+{% if film.acteurs %} Avec {{ film.acteurs }} <br> {% endif %}
+{% if film.genre %} {{ film.genre }},{% endif %}
+{% if film.annee %} {{ film.annee }},{% endif %}
+{% if film.pays %} {{ film.pays }},{% endif %}
+{% if film.duree %} {{ film.duree }} minutes <br> {% endif %}
+{% if film.age %} À partir de {{ film.age }} ans {% endif %} <br>
+<br>
+{% if film.duree %} {{ film.synopsis }} <br> {% endif %}
+<br>
 Séances de ce film : <br>
 <ul>
-{% for projection in film.projection_set.all %}
+{% for projection in projections %}
 <li>le {{ projection.seance.date }} à {{ projection.seance.lieu }} {{ projection.heure }}. Tarif : {% if projection.tarif %} {{ projection.tarif }} {% endif %} € <br>
 {% if projection.seance.plein_air %}
 !!! Séance en plein-air !!! <br>
+{% endif %}
+{% if projection.seance.festival %}
+!!! Festival Ouvre l'Oeil !!! <br>
+{% endif %}
+{% if projection.seance.mois_du_doc %}
+!!! Mois du doc !!! <br>
 {% endif %}
 </li>
 {% endfor %}

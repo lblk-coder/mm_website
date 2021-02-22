@@ -69,7 +69,9 @@ def listing(request): #  this view returns all the screenings in the dbase + res
 
 def detail(request, film_id):  #  this view shows every parameters a particular screening has
     film = get_object_or_404(Film, pk=film_id)
+    projections = film.projection_set.all().order_by('seance__date')
     context = {
         'film': film,
+        'projections': projections,
     }
     return render(request, 'seances/detail.html', context)
