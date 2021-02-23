@@ -24,10 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '#!)c1(2qfphe_(m+va1mn2ti57!_9mnt1jr1(7+t4c7w9p_^t('
 
 # SECURITY WARNING: don't run with debug turned on in production!
-if os.environ.get('ENV') == 'PRODUCTION':
-    DEBUG == False
-else:
-    DEBUG = True
+
+DEBUG = False  # production settings
+#DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -135,3 +134,5 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static/'),
 ]
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'assets/')
