@@ -22,7 +22,7 @@ class Film(models.Model):
     pays = models.CharField(max_length=200, default='')
     age = models.SmallIntegerField(blank=True, null=True)
     synopsis = models.TextField(max_length=10000, blank=True, default='')
-    picture = models.CharField(max_length=500, blank=True, default='')
+    photo = models.ImageField(blank=True, null=True)
     page_allocine = models.URLField(blank=True, default='')
 
     def __str__(self):
@@ -41,8 +41,8 @@ class Projection(models.Model):
 
 class Catalogue(models.Model):
     titre = models.CharField(max_length=200, unique=True)
-    catalogue = models.CharField(max_length=500)
-    couverture = models.CharField(max_length=500, blank=True, default='')
+    lien = models.FileField(blank=True, null=True)  # the link to the actual downloadable file
+    couv = models.ImageField(blank=True, null=True)  # the pic used as cover
     home_page = models.BooleanField(default=False)  # this field decides which Catalogue will be
     # presented on the home page of the site. See save() method override below.
     creation_date = models.DateTimeField(auto_now_add=True)

@@ -16,6 +16,7 @@
     <hr class="detail-separator">
 </div>
 
+<p>Ci-dessous vous pouvez filtrer les résultats parmis les séances programmées : </p>
 <form action="{% url 'seances:listing' %}" method="get">
 {{ form }}
 <input type="submit" value="Valider" name="query">
@@ -41,7 +42,7 @@
         <div class="article_seance">
         <div class="imgdefilm">
             <a href="{% url 'seances:detail' film_id=projection.film.id %}">
-                <img src="{{ projection.film.picture }}" alt="{{ projection.film.titre }}">
+                <img src="{{ projection.film.photo.url }}" alt="{{ projection.film.titre }}">
             </a>
         </div>
         <h3 class="titre">{{ projection.heure }} :

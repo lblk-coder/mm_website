@@ -12,8 +12,8 @@ def home(request):
             seances.append(seance)  # si séance pas passée, on l'ajoute à la liste
     paginator = Paginator(seances, 5)  # pour ne présenter que 5 séances max sur la page d'accueil
     page_obj = paginator.page(request.GET.get('page', '1'))
-    catalogue_cover = Catalogue.objects.get(home_page=True).couverture
-    catalogue_link = Catalogue.objects.get(home_page=True).catalogue
+    catalogue_cover = Catalogue.objects.get(home_page=True).couv.url
+    catalogue_link = Catalogue.objects.get(home_page=True).lien.url
     context = {
         'seances' : seances,
         'page_obj' : page_obj,

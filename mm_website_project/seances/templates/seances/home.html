@@ -11,25 +11,33 @@
 
         <div class="col-sm-2" id="catalogue">
             <div class="sliderchep">
+                    {% if catalogue_link %}
+                    {% if catalogue_cover %}
                     <a href="{{ catalogue_link }}" download> <!--insérer lien avalide de dl du catalogue -->
                         <img class="imgchep" src="{{ catalogue_cover }}" />
-                    <a/>
+                    </a>
+                    {% endif %}
+                    {% endif %}
             </div>
+            {% if catalogue_link %}
             <a href="{{ catalogue_link }}" download>
                 <h3>Catalogue du mois</h3>
             </a>
+            {% endif %}
         </div>
 {% for seance in page_obj %}
         <div class="col-sm-2 text-center">
             <div class="sliderchep">
                 {% for projection in seance.projection_set.all %}
                     <a href="{% url 'seances:detail' film_id=projection.film.id %}">
-                        <img class="imgchep" src="{{ projection.film.picture }}" />
-                    <a/>
+                        {% if projection.film.photo %}
+                        <img class="imgchep" src="{{ projection.film.photo.url }}" />
+                        {% endif %}
+                    </a>
                 {% endfor %}
             </div>
-            <h3><a href="">{{ seance.date }}</a></h3>
-            <h4><a href="">{{ seance.lieu }}</a></h4>
+            <h3>{{ seance.date }}</h3><!-- mettre un lien vers la page 'listing' avec une ancre sur ce choix de lieu ou de date -->
+            <h4>{{ seance.lieu }}</h4><!-- mettre un lien vers la page 'listing' avec une ancre sur ce choix de lieu ou de date -->
             {% for projection in seance.projection_set.all %}
                 <h6><a href="{% url 'seances:detail' film_id=projection.film.id %}">{{ projection.film.titre }}</a></h6>
             {% endfor %}
