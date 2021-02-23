@@ -1,4 +1,4 @@
-#!/home/lblk/Documents/dev/python/mm_website/venv/bin/python3.8
+#!/home/lblk/.virtualenvs/mm_website-virtualenv/bin/python3.8
 """Django's command-line utility for administrative tasks."""
 import os
 import sys

@@ -28,7 +28,9 @@ SECRET_KEY = '#!)c1(2qfphe_(m+va1mn2ti57!_9mnt1jr1(7+t4c7w9p_^t('
 DEBUG = False  # production settings
 #DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'lblk.pythonanywhere.com',
+]
 
 
 # Application definition
@@ -41,7 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'debug_toolbar',
+#    'debug_toolbar',
 ]
 
 MIDDLEWARE = [
@@ -52,7 +54,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
+#    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.locale.LocaleMiddleware',
 ]
 
@@ -82,17 +84,28 @@ WSGI_APPLICATION = 'mm_website_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+# Ci-dessous les configurations de la dbase de développement
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.postgresql',
+#        'NAME': 'mm_website',
+#        'USER': 'lblk',
+#        'PASSWORD': '',
+#        'HOST': '',
+#        'PORT': '5432',
+#    }
+#}
+
+# Ci-dessous les configurations de la dbase de production
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'mm_website',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'lblk$mm_website_db',
         'USER': 'lblk',
-        'PASSWORD': '',
-        'HOST': '',
-        'PORT': '5432',
+        'PASSWORD': 'Douala12',
+        'HOST': 'lblk.mysql.pythonanywhere-services.com',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
