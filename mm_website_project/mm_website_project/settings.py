@@ -25,11 +25,12 @@ SECRET_KEY = '#!)c1(2qfphe_(m+va1mn2ti57!_9mnt1jr1(7+t4c7w9p_^t('
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-DEBUG = False  # production settings
-#DEBUG = True
+#DEBUG = False  # production settings
+DEBUG = True  # development settings
 
 ALLOWED_HOSTS = [
-    'lblk.pythonanywhere.com',
+    'lblk.pythonanywhere.com',  # production host
+    '127.0.0.1',  # development host
 ]
 
 
@@ -43,7 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-#    'debug_toolbar',
+    'debug_toolbar',
 ]
 
 MIDDLEWARE = [
@@ -54,7 +55,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-#    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.locale.LocaleMiddleware',
 ]
 
@@ -86,27 +87,27 @@ WSGI_APPLICATION = 'mm_website_project.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 # Ci-dessous les configurations de la dbase de développement
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.postgresql',
-#        'NAME': 'mm_website',
-#        'USER': 'lblk',
-#        'PASSWORD': '',
-#        'HOST': '',
-#        'PORT': '5432',
-#    }
-#}
-
-# Ci-dessous les configurations de la dbase de production
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'lblk$mm_website_db',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'mm_website',
         'USER': 'lblk',
-        'PASSWORD': 'Douala12',
-        'HOST': 'lblk.mysql.pythonanywhere-services.com',
+        'PASSWORD': '',
+        'HOST': '',
+        'PORT': '5432',
     }
 }
+
+# Ci-dessous les configurations de la dbase de production
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.mysql',
+#        'NAME': 'lblk$mm_website_db',
+#        'USER': 'lblk',
+#        'PASSWORD': 'Douala12',
+#        'HOST': 'lblk.mysql.pythonanywhere-services.com',
+#    }
+#}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -144,12 +145,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/assets/'  # was set to "static" before 07/04/2021, maybe it was wrong ?
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static/'),
+    os.path.join(BASE_DIR, 'assets/'),  # was set to "static" before 07/04/2021, maybe it was wrong ?
 ]
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'assets/')
+#STATIC_ROOT = os.path.join(BASE_DIR, 'assets/') #reactivate in prod ?
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 

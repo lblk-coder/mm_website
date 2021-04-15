@@ -1,0 +1,15 @@
+Pour ajouter du contenu sur le site web, suivre les instructions ci-dessous : 
+
+<h1> Les titres doivent être dans des balises 'h1' </h1>
+<h2> Les sous-titres doivent être dans des balises 'h2' </h2>
+<h6> Ainsi de suite jusqu'au max : 'h6' </h6>
+
+<p> Les paragraphes doivent être dans des balises 'p'. Si vous souhaitez revenir à ligne à un endroit précis, <br> 
+il faut utiliser une balise 'br' (comme ci-avant à la fin de la virgule après le mot "précis"). </p> <br>
+
+<img src=''> 
+<p> Les images doivent être dans des balises 'img'. Il faut spécifier la source (point à éclaircir !) </p>
+
+<p> Et voilà, c'est tout ! :) </p>
+
+ 

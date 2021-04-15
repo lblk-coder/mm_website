@@ -1,0 +1,9 @@
+features or elts added since last commit (current branch = "releaseV1") :
+- carrousel (not finished)
+- scraping page allociné : https://blog.theodo.com/2019/01/data-scraping-scrapy-django-integration/#howididit
+install 'scrapy'
+- I put the js and jquery stuff at the end of "base.html" page, they were placed before the carrousel
+- "home" page : got rid of the catalogue, added one "seance" to the paginator
+- base.html : I made some modifications on the navbar (bigger police size, flexbox display of navitems).
+go back on the nav chapter of openclassrooms for its reponsivity settings
+- detail.html : put some tags on the raw html text : <h*>, <p>, <div>, etc.

@@ -10,7 +10,7 @@ def home(request):
     for seance in Seance.objects.all().order_by('date'):
         if seance.date >= today:
             seances.append(seance)  # si séance pas passée, on l'ajoute à la liste
-    paginator = Paginator(seances, 5)  # pour ne présenter que 5 séances max sur la page d'accueil
+    paginator = Paginator(seances, 6)  # pour ne présenter que 6 séances max sur la page d'accueil
     page_obj = paginator.page(request.GET.get('page', '1'))
     catalogue_cover = Catalogue.objects.get(home_page=True).couv.url
     catalogue_link = Catalogue.objects.get(home_page=True).lien.url
@@ -91,12 +91,6 @@ def content(request, value):
         return render(request, 'seances/content/emploi.html')
     elif int(value) == 6:
         return render(request, 'seances/content/rejoindre.html')
-    elif int(value) == 7:
-        catalogues = Catalogue.objects.all()
-        context = {
-            'catalogues' : catalogues
-        }
-        return render(request, 'seances/content/catalogues.html', context)
     elif int(value) == 8:
         return render(request, 'seances/content/plein-air.html')
     elif int(value) == 9:

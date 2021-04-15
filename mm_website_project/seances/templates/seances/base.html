@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
@@ -35,12 +35,27 @@
 
 <body>
 
+<!-- below is a test -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-6">OUECH</div>
+        <div class="col-6">YOYO</div>
+    </div>
+    <div class="row">
+        <div class="col-12">OUECH</div>
+    </div>
+</div>
+<!-- end of the test -->
+
     <div class="brand"><a href="{% url 'home' %}">Mondes et Multitudes</a></div>
     <div class="address-bar">Cinéma itinérant et ateliers d'éducation aux images en Aveyron</div>
 
+<div class="container-fluid">
+    <div class="row">
+
     <!-- Navigation -->
     <nav class="navbar navbar-default" role="navigation">
-        <div class="container">
+        <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -53,26 +68,28 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
-                <ul class="nav navbar-nav">
-                    <li class="lblk_nav_item">
+                <ul class="nav navbar-nav parent">
+                    <li class="nav-item enfant">
+                        <a href="{% url 'home' %}">Accueil</a>
+                    </li>
+                    <li class="nav-item enfant">
                         <a href="{% url 'seances:listing' %}">Séances</a>
                     </li>
-                    <li class="nav-item dropdown">
+                    <li class="nav-item dropdown enfant">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Éducation aux images
+                          Éducation<br> aux images
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                           <a class="dropdown-item" href="{% url 'seances:content' value=13 %}">Les ateliers de Louise</a><br>
                           <a class="dropdown-item" href="{% url 'seances:content' value=14 %}">Les dispositifs scolaires</a><br>
                         </div>
                     </li>
-                    <li class="nav-item dropdown">
+                    <li class="nav-item dropdown enfant">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Organiser une séance
+                          Organiser<br> une séance
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                           <a class="dropdown-item" href="{% url 'seances:content' value=6 %}">Rejoindre le circuit</a><br>
-                          <a class="dropdown-item" href="{% url 'seances:content' value=7 %}">Catalogues de films</a><br>
                           <a class="dropdown-item" href="{% url 'seances:content' value=8 %}">Séances en plein-air</a><br>
                           <a class="dropdown-item" href="{% url 'seances:content' value=9 %}">Ciné-séniors</a><br>
                           <a class="dropdown-item" href="{% url 'seances:content' value=10 %}">Ciné-patrimoine</a><br>
@@ -80,12 +97,12 @@
                           <a class="dropdown-item" href="{% url 'seances:content' value=12 %}">Séances militantes</a><br>
                         </div>
                     </li>
-                    <li class="lblk_nav_item">
-                        <a href="{% url 'seances:content' value=17 %}">Festival Ouvre l'Oeil</a>
+                    <li class="nav-item enfant">
+                        <a href="{% url 'seances:content' value=17 %}">Festival<br> Ouvre l'Oeil</a>
                     </li>
-                    <li class="nav-item dropdown">
+                    <li class="nav-item dropdown enfant">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Qui sommes-nous ?
+                          Qui<br> sommes-nous ?
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                           <a class="dropdown-item" href="{% url 'seances:content' value=0 %}">L'association</a><br>
@@ -94,7 +111,7 @@
                           <a class="dropdown-item" href="{% url 'seances:content' value=3 %}">Nos partenaires</a>
                         </div>
                     </li>
-                    <li class="nav-item dropdown">
+                    <li class="nav-item dropdown enfant">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           Contact
                         </a>
@@ -104,13 +121,17 @@
                         </div>
                     </li>
                 </ul>
+
             </div>
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container -->
     </nav>
 
-    <div class="container">
+</div>
+    </div>
+
+    <div class="container-fluid">
       <div class="row">
         <div class="box">
           {% block content %}{% endblock %}
@@ -119,23 +140,85 @@
     </div>
     <div class="container">
 
+
+
+
+<!-- below is the carousel -->
+<div class="container">
+
+        <div class="row">
+            <div class="box">
+                <div class="col-lg-12 text-center">
+                    <div id="carousel-example-generic" class="carousel slide">
+                        <!-- Indicators -->
+                        <ol class="carousel-indicators hidden-xs">
+                            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                        </ol>
+
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner">
+                            <div class="item active">
+                                <img class="img-responsive img-full" src="{% static 'img/ghost_dog.jpg' %}" alt="">
+                            </div>
+                            <div class="item">
+                                <img class="img-responsive img-full" src="{% static 'img/logo_mms.jpg' %}" alt="">
+                            </div>
+                            <div class="item">
+                                <img class="img-responsive img-full" src="img/recoin.jpg" alt="">
+                            </div>
+                        </div>
+
+                        <!-- Controls -->
+                        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                            <span class="icon-prev"></span>
+                        </a>
+                        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                            <span class="icon-next"></span>
+                        </a>
+                    </div>
+                    <h2 class="brand-before">
+                        <small>Welcome to</small>
+                    </h2>
+                    <h1 class="brand-name">Business Casual</h1>
+                    <hr class="tagline-divider">
+                    <h2>
+                        <small>By
+                            <strong>Start Bootstrap</strong>
+                        </small>
+                    </h2>
+                </div>
+            </div>
+        </div>
+</div>
+<!-- end of carousel -->
+
+<div class="d-flex flex-column align-items-center">
+    <h4 class="mb-4">Follow us</h4>
+    <ul>
+        <li><span class="social-icon social-facebook"><i class="fa fa-facebook"></i></span></li>
+        <li><span class="social-icon social-google"><i class="fa fa-google"></i></span></li>
+        <li><span class="social-icon social-linkedin"><i class="fa fa-linkedin"></i></span></li>
+        <li><span class="social-icon social-instagram"><i class="fa fa-instagram"></i></span></li>
+        <li><span class="social-icon social-twitter"><i class="fa fa-twitter"></i></span></li>
+    </ul>
+</div>
+
     <footer>
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <p>Copyright &copy; Your Website 2014</p>
+                    <p>Copyright &copy; Mondes et Multitudes 2021</p>
                 </div>
             </div>
         </div>
     </footer>
-
     <!-- jQuery -->
     <script src="{% static 'js/jquery.js' %}"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
-
-
+    </div>
 </body>
-
 </html>

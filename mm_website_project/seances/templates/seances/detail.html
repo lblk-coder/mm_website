@@ -9,20 +9,23 @@
 </div>
 <div class="col-md-6">
 <div style="margin-bottom:45px">
-{% if film.real %} <p> De {{ film.real }} <br> {% endif %}
-{% if film.acteurs %} Avec {{ film.acteurs }} <br> {% endif %}
+    {% if film.real %} <h3> De {{ film.real }}</h3> {% endif %}
+<p> {% if film.acteurs %} Avec {{ film.acteurs }} {% endif %} <br>
 {% if film.genre %} {{ film.genre }},{% endif %}
 {% if film.annee %} {{ film.annee }},{% endif %}
 {% if film.pays %} {{ film.pays }},{% endif %}
-{% if film.duree %} {{ film.duree }} minutes <br> {% endif %}
-{% if film.age %} À partir de {{ film.age }} ans {% endif %} <br>
-<br>
-{% if film.duree %} {{ film.synopsis }} <br> {% endif %}
-<br>
-Séances de ce film : <br>
+{% if film.duree %} {{ film.duree }} minutes {% endif %} <br>
+{% if film.age %} À partir de {{ film.age }} ans {% endif %} </p>
+<p>
+{% if film.synopsis %} {{ film.synopsis }} {% endif %}
+</p>
+<p>
+Séances de ce film :<br>
 <ul>
 {% for projection in projections %}
+<div class="seance">
 <li>le {{ projection.seance.date }} à {{ projection.seance.lieu }} {{ projection.heure }}. Tarif : {% if projection.tarif %} {{ projection.tarif }} {% endif %} € <br>
+</div>
 {% if projection.seance.plein_air %}
 !!! Séance en plein-air !!! <br>
 {% endif %}
