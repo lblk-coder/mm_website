@@ -486,3 +486,12 @@ a:hover {
 footer {
     text-align: center;
 }
+
+/* next 2 change the color of the link from home page to populated form in 'listing' page */
+.link_populated_home_page {
+    color: rgba(0,0,0,.8);
+}
+
+.link_populated_home_page:hover {
+    color: rgba(0,0,0,1);
+}

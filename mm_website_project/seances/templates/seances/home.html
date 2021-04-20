@@ -13,13 +13,18 @@
 {% for seance in page_obj %}
         <div class="col-12 col-md-2 card text-center bg-transparent" style="width: 18rem;">
             <!-- below we only get the first photo on the proj list of the seance -->
+            <a class="link_populated_home_page" href="{% url 'seances:listing2' populated=1 seance_id=seance.id %}">
             {% if seance.projection_set.all.0.film.photo %}
                 <img class="card-img-top" src="{{ seance.projection_set.all.0.film.photo.url }}" />
             {% endif %}
-        <h3 class="card-title">{{ seance.date }}</h3><!-- mettre un lien vers la page 'listing' avec une ancre sur ce choix de lieu ou de date -->
-        <h4 class="card-subtitle">{{ seance.lieu }}</h4><!-- mettre un lien vers la page 'listing' avec une ancre sur ce choix de lieu ou de date -->
+            <h3 class="card-title">{{ seance.date }}</h3><!-- mettre un lien vers la page 'listing' avec une ancre sur ce choix de lieu ou de date -->
+        <h4 class="card-subtitle">{{ seance.lieu }}</h4></a><!-- mettre un lien vers la page 'listing' avec une ancre sur ce choix de lieu ou de date -->
             {% for projection in seance.projection_set.all %}
-                <p class="card-text"><a id="home-card-link" href="{% url 'seances:detail' film_id=projection.film.id %}">{{ projection.film.titre }}</a></p>
+                <p class="card-text">
+                    <a id="home-card-link" href="{% url 'seances:detail' film_id=projection.film.id %}">
+                        {{ projection.film.titre }}
+                    </a>
+                </p>
             {% endfor %}
         </div>
 {% endfor %}

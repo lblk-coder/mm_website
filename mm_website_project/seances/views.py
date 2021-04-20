@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 import datetime
 from django.core.paginator import Paginator
 from .models import Film, Seance, Projection, Catalogue
@@ -22,8 +22,14 @@ def home(request):
     }
     return render(request, 'seances/home.html', context)
 
-def listing(request): #  this view returns all the screenings in the dbase + research form
+def listing(request, populated=0, seance_id=None): #  this view returns all the screenings in the dbase + research form
     query = request.GET.get('query')
+    if populated == '1':  # populated == 1 when a seance is clicked on, on the home page. It populates the form
+        # with this particular seance's date and location.
+        query = True
+        request.GET = request.GET.copy()
+        request.GET['Lieu'] = Seance.objects.get(pk=seance_id).lieu
+        request.GET['Date'] = Seance.objects.get(pk=seance_id).date
     if query:
         seances = []
         form = FormSeances(request.GET)
