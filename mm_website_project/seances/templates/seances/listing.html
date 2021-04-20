@@ -2,13 +2,6 @@
 {% extends 'seances/base.html' %}
 
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Titre</title>
-</head>
-<body>
 <div class="col-lg-12">
     <hr>
     <h2 class="intro-text text-center">Les séances programmées
@@ -27,14 +20,11 @@
 
 {# à réactiver plus tard {% include 'seances/search_form.html' %} #}
 
-<div class="container">
+<div class="container-fluid">
     {% for seance in seances %}
-    <div class="row">
-        <div class="col-12">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                    <h2>le {{ seance.date }} à {{ seance.lieu }}</h2>
+    <div class="row seance-listing">
+            <div class="col-12">
+                <h2>le {{ seance.date }} à {{ seance.lieu }}</h2>
                     {% if seance.plein_air %}
                     <h4>!!! Séance en plein-air !!! </h4>
                     {% endif %}
@@ -44,42 +34,39 @@
                     {% if seance.mois_du_doc %}
                     <h4>!!! Mois du doc !!!</h4>
                     {% endif %}
-                    </div>
-                </div>
-                {% for projection in seance.projection_set.all %}
-                    <div class="row">
-                        <div class="col-4 imgdefilm">
-                            <a href="{% url 'seances:detail' film_id=projection.film.id %}">
-                                <img src="{{ projection.film.photo.url }}" alt="{{ projection.film.titre }}">
-                            </a>
-                        </div>
-                        <div class="col-8 article_seance">
-                            <h3 class="titre">{{ projection.heure }} :
-                                <a href="{% url 'seances:detail' film_id=projection.film.id %}">
-                                    {{ projection.film.titre }}
-                                </a>
-                            </h3>
-                            <p>
-                                {% if projection.film.real %} De {{ projection.film.real }} <br> {% endif %}
-                                {% if projection.film.acteurs %} Avec {{ projection.film.acteurs }} <br> {% endif %}
-                                {% if projection.film.genre %} {{ projection.film.genre }},{% endif %}
-                                {% if projection.film.annee %} {{ projection.film.annee }},{% endif %}
-                                {% if projection.film.pays %} {{ projection.film.pays }},{% endif %}
-                                {% if projection.film.duree %} {{ projection.film.duree }} minutes <br> {% endif %}
-                                {% if projection.film.age %} À partir de {{ projection.film.age }} ans <br> {% endif %}
-                                {% if projection.film.synopsis %} {{ projection.film.synopsis }} <br> {% endif %}
-                                {% if projection.animation %} Animation : {{ projection.animation }} <br> {% endif %}
-                                {% if projection.tarif %} Tarif :  {{ projection.tarif }} € <br> {% endif %}
-                            </p>
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
+            </div> <!-- end of col-12 -->
+    </div> <!-- end of row -->
+{% for projection in seance.projection_set.all %}
+    <div class="row seance-listing">
+        <div class="col-12 col-md-4">
+            <img class="img-listing" src="{{ projection.film.photo.url }}" alt="{{ projection.film.titre }}">
         </div>
-    </div>
-    {% endfor %}
-</div>
-</body>
-</html>
+        <div class="card col-12 col-md-8 bg-transparent">
+            <div class="card-body">
+                <h3 class="card-title">{{ projection.heure }} :
+                    <a class="film-title-listing" href="{% url 'seances:detail' film_id=projection.film.id %}">
+                        {{ projection.film.titre }}
+                    </a>
+                </h3>
+                <p class="card-text">
+                    {% if projection.film.real %} De {{ projection.film.real }} <br> {% endif %}
+                    {% if projection.film.acteurs %} Avec {{ projection.film.acteurs }} <br> {% endif %}
+                    {% if projection.film.genre %} {{ projection.film.genre }},{% endif %}
+                    {% if projection.film.annee %} {{ projection.film.annee }},{% endif %}
+                    {% if projection.film.pays %} {{ projection.film.pays }},{% endif %}
+                    {% if projection.film.duree %} {{ projection.film.duree }} minutes <br> {% endif %}
+                    {% if projection.film.age %} À partir de {{ projection.film.age }} ans <br> {% endif %}
+                    {% if projection.film.synopsis %} {{ projection.film.synopsis }} <br> {% endif %}
+                    {% if projection.animation %} Animation : {{ projection.animation }} <br> {% endif %}
+                    {% if projection.tarif %} Tarif :  {{ projection.tarif }} € <br> {% endif %}
+                </p>
+            </div> <!-- end of card-body -->
+        </div> <!-- end of card -->
+    </div> <!-- end of row -->
+{% endfor %}
+
+{% endfor %}
+
+</div> <!-- end of container of the page -->
 
 {% endblock %}

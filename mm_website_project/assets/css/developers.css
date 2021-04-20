@@ -1,30 +1,270 @@
+/* below are the basic design that was set on the business casual theme */
 
-
-div.dropdown-menu {
-    min-width: 240px;
+body {
+    font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+    background: url('../img/rouge.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    text-transform: uppercase;
+    font-family: "Josefin Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+p {
+    font-size: 1.25em;
+    line-height: 1.6;
+    color: #000;
+}
+
+hr {
+    max-width: 400px;
+    border-color: #999999;
+}
+
+.brand,
+.address-bar {
+    display: none;
+}
+
+.navbar-brand {
+    text-transform: uppercase;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.navbar-nav {
+    text-transform: uppercase;
+    font-weight: 400;
+    letter-spacing: 3px;
+}
+
+.img-full {
+    min-width: 100%;
+}
+
+.brand-before,
+.brand-name {
+    text-transform: capitalize;
+}
+
+.brand-before {
+    margin: 15px 0;
+}
+
+.brand-name {
+    margin: 0;
+    font-size: 4em;
+}
+
+.tagline-divider {
+    margin: 15px auto 3px;
+    max-width: 250px;
+    border-color: #999999;
+}
+
+.box {
+    margin-bottom: 20px;
+    padding: 30px 15px;
+    background: #fff;
+    background: rgba(255,255,255,0.9);
+}
+
+.intro-text {
+    text-transform: uppercase;
+    font-size: 1.25em;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+.img-border {
+    float: none;
+    margin: 0 auto 0;
+    border: #999999 solid 1px;
+}
+
+.img-left {
+    float: none;
+    margin: 0 auto 0;
+}
+
+footer {
+    background: #fff;
+    background: rgba(255,255,255,0.9);
+}
+
+footer p {
+    margin: 0;
+    padding: 50px 0;
+}
+
+@media screen and (min-width:768px) {
+    .brand {
+        display: inherit;
+        margin: 0;
+        padding: 30px 0 10px;
+        text-align: center;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        font-family: "Josefin Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
+        font-size: 5em;
+        font-weight: 700;
+        line-height: normal;
+        color: #fff;
+    }
+
+    .top-divider {
+        margin-top: 0;
+    }
+
+    .img-left {
+        float: left;
+        margin-right: 25px;
+    }
+
+    .address-bar {
+        display: inherit;
+        margin: 0;
+        padding: 0 0 40px;
+        text-align: center;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        text-transform: uppercase;
+        font-size: 1.25em;
+        font-weight: 400;
+        letter-spacing: 3px;
+        color: #fff;
+    }
+
+    .navbar {
+        border-radius: 0;
+    }
+
+    .navbar-header {
+        display: none;
+    }
+
+    .navbar {
+        min-height: 0;
+    }
+
+    .navbar-expand-lg {
+        border: none;
+        background: #fff;
+        background: rgba(255,255,255,0.9);
+    }
+
+    .nav>li>a {
+        padding: 35px;
+    }
+
+    .navbar-nav>li>a {
+        line-height: normal;
+    }
+/*
+    .navbar-nav {
+        display: table;
+        float: none;
+        margin: 0 auto;
+        table-layout: fixed;
+        font-size: 1.25em;
+    }
+    */
+}
+
+@media screen and (min-width:1200px) {
+    .box:after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+}
+/* end of basic design I picked up from the theme */
+
+/*  CUSTOMED by OCR  */
+.brand a {
+  color: white;
+  text-decoration: none;
+}
+
+.brand a:hover {
+  color: #999;
+  text-decoration: none;
+}
+
+.artist_name {
+  font-size: 20px;
+  font-weight: normal;
+}
+
+.intro-text {
+  font-size: 40px;
+  font-weight: 300;
+}
+
+.detail-separator {
+  padding-bottom: 25px;
+}
+
+.clearfix {
+  padding-bottom: 40px;
+}
+
+#search_form {
+  width: 43%;
+  margin: auto;
+  text-align: center;
+}
+
+.form-group.has-feedback .form-control {
+  padding: 6px 5px;
+  color: red;
+}
+
+.errorlist {
+  margin: 10px auto;
+}
+
+.errorlist .error {
+  color: red;
+}
+/* end of customed by OCR properties */
+
+/* set the color of the unfolding dropdown menu */
+div.dropdown-menu {
+    background-color: rgba(239,231,231);
+}
+
+/* set the font style inside the dropdown menu */
+div.dropdown-menu>a {
+    font-weight: bolder;
+}
+
+/* set the bground so it does not change when hovered, in the dpdown menu */
+div.dropdown-menu>a:hover {
+    background-color: rgba(239,231,231);
+}
+
+/* set the font size and color in the dpdown menu */
 a.dropdown-item {
-    padding-left: 10px;
     font-size: 13px;
     color: rgb(51, 51, 51);
 }
+
 
 .navbar-nav {
     font-size: 15px;
     letter-spacing: 0px;
     text-align: center;
     font-weight: bolder;
-}
-
-/* the two properties below 'parent' and 'enfant' set the display of the elts
-of the navbar items, so they are centered*/
-.parent {
-    display: flex;
-}
-
-.enfant {
-    margin: auto;
 }
 
 .sliderchep {
@@ -43,8 +283,14 @@ of the navbar items, so they are centered*/
     padding-top: 3px;
 }
 
+/* next two properties set the link on the home page to all seances */
 #voir_toutes {
     text-align: center;
+    color: rgba(0,0,0,.5);
+}
+
+#voir_toutes:hover {
+    color: rgba(0,0,0,.7);
 }
 
 .imgdefilm {
@@ -65,7 +311,178 @@ of the navbar items, so they are centered*/
 }
 
 /* on the 'detail' page, the font of each seance is bold.*/
-div.seance {
+span.seance-bold {
     font-weight: bold;
 }
 
+
+/* set the properties for big screens before collapse break point */
+@media (min-width: 1000px) {
+    /* next 3 properties define the size of navbar buttons so they are responsive */
+    li.size-limit-1 {
+    max-width: 109px;
+    }
+
+    li.size-limit-2 {
+    max-width: 102px;
+    }
+
+    li.size-limit-3 {
+    max-width: 141px;
+    }
+
+    .dropdown-menu {display: block;visibility: hidden;opacity:0;transform: translateY(50px);transition:.5s ease all;}
+    .dropdown-menu.show {display: block;visibility: visible;opacity:1;transform: translateY(0px);transition:.5s ease all;}
+
+}
+
+/* properties only displayed on small screen devices */
+@media (max-width: 999px) {
+    /* next 2 properties are meant to align vertically the dpdown menu when toggled */
+    .nav-item {
+        width: 187px;
+        height: 59px;
+        margin: 0px;
+    }
+
+    .nav-link {
+        padding: 0px;
+    }
+
+}
+
+/* define the background of the button when navbar is collapsed, on screens < 1000px */
+button.navbar-toggler {
+    background: rgba(255,255,255,0.9);
+}
+
+/* set the margin below the navbar, until it collapses */
+/* desabled for the moment
+nav {
+    margin-bottom: 10px;
+}
+*/
+
+/* set the color and hovering behavior of not dropdowns link of the navbar */
+.nav-item a {
+    color: rgba(0,0,0,.5);
+}
+
+/* idem */
+.nav-item a:hover {
+    color: rgba(0,0,0,.7);
+    text-decoration-line: none;
+}
+
+/* defines the background of the navbar */
+nav.navbar {
+    border: none;
+    background: rgba(255,255,255,0.9);
+}
+
+/* next 5 properties custom the cards on the home page */
+.card {
+    border: none;
+}
+
+.card-img-top {
+    border-bottom-left-radius: calc(.25rem - 1px);
+    border-bottom-right-radius: calc(.25rem - 1px);
+}
+
+.card-title {
+    margin-top: .75rem;
+}
+
+#home-card-link {
+    color: rgba(0,0,0,.5);
+    font-weight: bolder;
+}
+
+#home-card-link:hover {
+    color: rgba(0,0,0,.7);
+    text-decoration: none;
+}
+
+h6 {
+    text-align: center;
+    margin-top: 70px;
+    font-size: 1.5rem;
+}
+
+/* changes the color of the title of the movies on the "listing" page */
+.film-title-listing {
+    color: rgba(0,0,0,.5);
+    font-weight: bolder;
+}
+
+a:hover {
+    color: rgba(0,0,0,.7);
+    text-decoration: none;
+}
+
+.img-listing {
+    width: 100%;
+    border-bottom-left-radius: calc(.25rem - 1px);
+    border-bottom-right-radius: calc(.25rem - 1px);
+    border-top-left-radius: calc(.25rem - 1px);
+    border-top-right-radius: calc(.25rem - 1px);
+}
+
+.seance-listing {
+    margin-top: 35px;
+    margin-bottom: 35px;
+}
+
+/* social media buttons properties */
+.socialmedia-icon-container {
+    width: 30px;
+    margin-top: 25%;
+}
+
+@media (min-width:800px) {
+    .socialmedia-icon-container {
+        width: 40px;
+        margin-top: 25%;
+        transition: transform .2s;
+    }
+
+    .socialmedia-icon-container:hover {
+        transform: scale(1.5);
+    }
+}
+
+.socialmedia-block-container {
+    position: absolute;
+    margin-top: 3%;
+    margin-left: 2%;
+    z-index: 2;
+}
+
+.socialmedia-icon {
+    width: 100%;
+}
+
+/* relative position of the carousel and buttons div for the social media buttons */
+.socialmedia-and-carousel-container {
+    position: relative;
+}
+
+#carouselExampleIndicators {
+    z-index: 1;
+}
+
+@media (max-width: 640px) {
+    #carouselExampleIndicators {
+        display: none;
+    }
+}
+
+/* properties of the legal mentions in the footer */
+.mentions-legales-footer {
+    font-size: 0.9rem;
+}
+
+footer {
+    text-align: center;
+}
