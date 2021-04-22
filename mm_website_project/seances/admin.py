@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Seance, Film, Projection, Catalogue
+from .models import Seance, Film, Projection, CarouselSlider
 # Register your models here.
 
 class ProjectionInline(admin.TabularInline):
@@ -25,4 +25,4 @@ class FilmAdmin(admin.ModelAdmin):
     inlines = [SeanceProjectionInline,]
     pass
 
-admin.site.register(Catalogue)
+admin.site.register(CarouselSlider)

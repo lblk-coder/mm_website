@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 import datetime
 from django.core.paginator import Paginator
-from .models import Film, Seance, Projection, Catalogue
+from .models import Film, Seance, Projection
 from .forms import FormSeances
 
 def home(request):
@@ -12,13 +12,13 @@ def home(request):
             seances.append(seance)  # si séance pas passée, on l'ajoute à la liste
     paginator = Paginator(seances, 6)  # pour ne présenter que 6 séances max sur la page d'accueil
     page_obj = paginator.page(request.GET.get('page', '1'))
-    catalogue_cover = Catalogue.objects.get(home_page=True).couv.url
-    catalogue_link = Catalogue.objects.get(home_page=True).lien.url
+    #catalogue_cover = Catalogue.objects.get(home_page=True).couv.url
+    #catalogue_link = Catalogue.objects.get(home_page=True).lien.url
     context = {
         'seances' : seances,
         'page_obj' : page_obj,
-        'catalogue_cover' : catalogue_cover,
-        'catalogue_link' : catalogue_link,
+        #'catalogue_cover' : catalogue_cover,
+        #'catalogue_link' : catalogue_link,
     }
     return render(request, 'seances/home.html', context)
 
