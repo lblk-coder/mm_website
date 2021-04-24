@@ -22,7 +22,7 @@ class Film(models.Model):
     pays = models.CharField(max_length=200, default='')
     age = models.SmallIntegerField(blank=True, null=True)
     synopsis = models.TextField(max_length=10000, blank=True, default='')
-    picture = models.CharField(max_length=500, blank=True, default='')
+    photo = models.ImageField(blank=True, null=True)
     page_allocine = models.URLField(blank=True, default='')
 
     def __str__(self):
@@ -33,34 +33,34 @@ class Projection(models.Model):
     seance = models.ForeignKey(Seance, on_delete=models.CASCADE)
     heure = models.TimeField()
     animation = models.TextField(max_length=10000, blank=True, default='')
-    tarif = models.SmallIntegerField(blank=True, null=True)
+    tarif = models.FloatField(blank=True, null=True)
+    tarif_reduit = models.FloatField(blank=True, null=True, verbose_name='Tarif réduit')
 
     def __str__(self):
         msg = "Projection de "+str(self.film)+" à "+str(self.seance.lieu)+" le "+str(self.seance.date)+" à "+str(self.heure)
         return msg
 
-class Catalogue(models.Model):
-    titre = models.CharField(max_length=200, unique=True)
-    catalogue = models.CharField(max_length=500)
-    couverture = models.CharField(max_length=500, blank=True, default='')
-    home_page = models.BooleanField(default=False)  # this field decides which Catalogue will be
-    # presented on the home page of the site. See save() method override below.
-    creation_date = models.DateTimeField(auto_now_add=True)
+class CarouselSlider(models.Model):
+    image = models.ImageField(blank=True, null=True)  # the pic used as slider
+    date_d_ajout = models.DateField(auto_now=True, verbose_name='Date d\'ajout')
+    nom = models.CharField(max_length=200, blank=True, default='')
 
-    def __str__(self):
-        return self.titre
+    class Meta:
+        verbose_name = 'Images de carrousel'
+#    def __str__(self):
+#        return self.titre
 
-    def save(self, *args, **kwars):  # changing the save method so there can only be one
+#    def save(self, *args, **kwars):  # changing the save method so there can only be one
         # Catalogue object with home_page == True (so only one Catalogue will be presented
         # on the home page)
-        if self.home_page == True:
-            try:
-                temp = Catalogue.objects.get(home_page=True)
-                if self != temp:
-                    temp.home_page = False
-                    temp.save()
-            except Catalogue.DoesNotExist:
-                pass
-            super(Catalogue, self).save(*args, **kwars)
-        else:
-            super(Catalogue, self).save(*args, **kwars)
+#        if self.home_page == True:
+#            try:
+#                temp = Catalogue.objects.get(home_page=True)
+#                if self != temp:
+#                    temp.home_page = False
+#                    temp.save()
+#            except Catalogue.DoesNotExist:
+#                pass
+#            super(Catalogue, self).save(*args, **kwars)
+#        else:
+#            super(Catalogue, self).save(*args, **kwars)

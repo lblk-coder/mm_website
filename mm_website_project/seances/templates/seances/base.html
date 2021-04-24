@@ -1,22 +1,17 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
 
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1" shrink-to-fit=no">
 
     <title>Mondes et Multitudes - Cinéma itinérant et ateliers d'éducation aux images en Aveyron</title>
 
     {% load static %}
 
-    <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}" />
-    <!-- Custom CSS -->
-    <link rel="stylesheet" type="text/css" href="{% static 'css/business-casual.css' %}" />
+    <!-- Bootstrap Core CSS added directly from their site on the 19/04/2021, page : https://getbootstrap.com/docs/4.1/getting-started/introduction/ -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <!-- developer's own modifications -->
     <link rel="stylesheet" type="text/css" href="{% static 'css/developers.css' %}" />
 
@@ -24,118 +19,144 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
 
 </head>
 
 <body>
 
+<div class="brand-and-adress-bar">
     <div class="brand"><a href="{% url 'home' %}">Mondes et Multitudes</a></div>
-    <div class="address-bar">Cinéma itinérant et atliers d'éducation aux images en Aveyron</div>
+    <div class="address-bar">Cinéma itinérant et ateliers d'éducation aux images en Aveyron</div>
+</div>
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-default" role="navigation">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+<!-- copied from OCR beginning -->
 
-                <ul class="nav navbar-nav">
-                    <li class="lblk_nav_item">
-                        <a href="{% url 'seances:listing' %}">Séances</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Éducation aux images
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                          <a class="dropdown-item" href="{% url 'seances:content' value=13 %}">Les ateliers de Louise</a><br>
-                          <a class="dropdown-item" href="{% url 'seances:content' value=14 %}">Les dispositifs scolaires</a><br>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Organiser une séance
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                          <a class="dropdown-item" href="{% url 'seances:content' value=6 %}">Rejoindre le circuit</a><br>
-                          <a class="dropdown-item" href="{% url 'seances:content' value=7 %}">Catalogues de films</a><br>
-                          <a class="dropdown-item" href="{% url 'seances:content' value=8 %}">Séances en plein-air</a><br>
-                          <a class="dropdown-item" href="{% url 'seances:content' value=9 %}">Ciné-séniors</a><br>
-                          <a class="dropdown-item" href="{% url 'seances:content' value=10 %}">Ciné-patrimoine</a><br>
-                          <a class="dropdown-item" href="{% url 'seances:content' value=11 %}">Ciné-spectacles</a><br>
-                          <a class="dropdown-item" href="{% url 'seances:content' value=12 %}">Séances militantes</a><br>
-                        </div>
-                    </li>
-                    <li class="lblk_nav_item">
-                        <a href="{% url 'seances:content' value=17 %}">Festival Ouvre l'Oeil</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Qui sommes-nous ?
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                          <a class="dropdown-item" href="{% url 'seances:content' value=0 %}">L'association</a><br>
-                          <a class="dropdown-item" href="{% url 'seances:content' value=1 %}">L'équipe</a><br>
-                          <a class="dropdown-item" href="{% url 'seances:content' value=2 %}">Le conseil d'administration</a><br>
-                          <a class="dropdown-item" href="{% url 'seances:content' value=3 %}">Nos partenaires</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Contact
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                          <a class="dropdown-item" href="{% url 'seances:content' value=4 %}">Nous contacter</a><br>
-                          <a class="dropdown-item" href="{% url 'seances:content' value=5 %}">Offres d'emploi</a><br>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
+<nav class="navbar navbar-expand-lg navbar-light">
+   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+   </button>
+    <div id="navbarNavDropdown" class="collapse navbar-collapse">
+        <ul class="navbar-nav container-fluid justify-content-around align-items-center">
+            <li class="nav-item">
+                <a href="{% url 'home' %}">Accueil</a>
+            </li>
+            <li class="nav-item">
+                <a href="{% url 'seances:listing' %}">Séances</a>
+            </li>
+            <li class="nav-item dropdown size-limit-1">
+                <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Éducation aux images
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{% url 'seances:content' value=13 %}">Les ateliers de Louise</a><br>
+                    <a class="dropdown-item" href="{% url 'seances:content' value=14 %}">Les dispositifs scolaires</a><br>
+                </div>
+            </li>
+            <li class="nav-item dropdown size-limit-1">
+                <a class="nav-link" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Organiser une séance
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="{% url 'seances:content' value=6 %}">Rejoindre le circuit</a><br>
+                  <a class="dropdown-item" href="{% url 'seances:content' value=8 %}">Séances en plein-air</a><br>
+                  <a class="dropdown-item" href="{% url 'seances:content' value=9 %}">Ciné-séniors</a><br>
+                  <a class="dropdown-item" href="{% url 'seances:content' value=10 %}">Ciné-patrimoine</a><br>
+                  <a class="dropdown-item" href="{% url 'seances:content' value=11 %}">Ciné-spectacles</a><br>
+                  <a class="dropdown-item" href="{% url 'seances:content' value=12 %}">Séances militantes</a><br>
+                </div>
+            </li>
+            <li class="nav-item size-limit-2">
+                <a href="{% url 'seances:content' value=17 %}">Festival Ouvre l'Oeil</a>
+            </li>
+            <li class="nav-item dropdown size-limit-3">
+                <a class="nav-link" href="#" id="navbarDropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Qui sommes-nous ?
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
+                  <a class="dropdown-item" href="{% url 'seances:content' value=0 %}">L'association</a><br>
+                  <a class="dropdown-item" href="{% url 'seances:content' value=1 %}">L'équipe</a><br>
+                  <a class="dropdown-item" href="{% url 'seances:content' value=2 %}">Le conseil d'administration</a><br>
+                  <a class="dropdown-item" href="{% url 'seances:content' value=3 %}">Nos partenaires</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Contact
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
+                  <a class="dropdown-item" href="{% url 'seances:content' value=4 %}">Nous contacter</a><br>
+                  <a class="dropdown-item" href="{% url 'seances:content' value=5 %}">Offres d'emploi</a><br>
+                </div>
+            </li>
+        </ul> <!-- navbar unordered list container -->
+    </div>
+</nav>
+<!-- copied from OCR end -->
+
+<!-- a container to place social media buttons above the carousel -->
+<div class="socialmedia-and-carousel-container">
+    <div class="socialmedia-block-container">
+        <div class="socialmedia-icon-container">
+            <a href="https://www.facebook.com/mondesetmultitudes">
+                <img class="socialmedia-icon" src="{% static 'img/facebook2.svg' %}">
+            </a>
         </div>
-        <!-- /.container -->
-    </nav>
+        <div class="socialmedia-icon-container newsletter">
+            <img class="socialmedia-icon" src="{% static 'img/newsletter.svg' %}">
+        </div>
+    </div>
 
-    <div class="container">
+<!-- beginning of carousel -->
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+      {% for slide, bool in carousel_sliders_dict.items %}
+    <li data-target="#carouselExampleIndicators" data-slide-to="{{ forloop.counter0 }}"{% if bool %} class="active"{% endif %}></li>
+      {% endfor %}
+  </ol>
+  <div class="carousel-inner">
+      {% for slide, bool in carousel_sliders_dict.items %}
+    <div class="carousel-item{% if bool %} active{% endif %}">
+      <img class="d-block w-100" src="{{ slide.image.url }}" alt="Slide">
+    </div>
+      {% endfor %}
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+<!-- end of carousel -->
+
+</div> <!-- the container for social media and carousel -->
+
+<!-- beginning of the page -->
+        <div class="container-fluid">
       <div class="row">
-        <div class="box">
+        <div class="box container-fluid">
           {% block content %}{% endblock %}
         </div>
       </div>
     </div>
-    <div class="container">
-
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <p>Copyright &copy; Your Website 2014</p>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- jQuery -->
-    <script src="{% static 'js/jquery.js' %}"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+<!-- end of the page -->
 
 
+<footer>
+    <p class="mentions-legales-footer">
+        Association Mondes et Multitudes <br>
+        8 Route du Moulin, Saint-Cyprien-sur-Dourdou <br>
+        12320 – Conques en Rouergue <br>
+        <a href="{% url 'seances:content' value=4 %}">Mentions légales</a>
+    </p>
+</footer>
+
+
+<!-- Bootstrap JS added directly from their site on the 19/04/2021, page : https://getbootstrap.com/docs/4.1/getting-started/introduction/ -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </body>
-
 </html>

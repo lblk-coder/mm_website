@@ -1,7 +1,8 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 import datetime
+import pytz
 from django.core.paginator import Paginator
-from .models import Film, Seance, Projection, Catalogue
+from .models import Film, Seance, Projection, CarouselSlider
 from .forms import FormSeances
 
 def home(request):
@@ -10,20 +11,32 @@ def home(request):
     for seance in Seance.objects.all().order_by('date'):
         if seance.date >= today:
             seances.append(seance)  # si séance pas passée, on l'ajoute à la liste
-    paginator = Paginator(seances, 5)  # pour ne présenter que 5 séances max sur la page d'accueil
+    paginator = Paginator(seances, 6)  # pour ne présenter que 6 séances max sur la page d'accueil
     page_obj = paginator.page(request.GET.get('page', '1'))
-    catalogue_cover = Catalogue.objects.get(home_page=True).couverture
-    catalogue_link = Catalogue.objects.get(home_page=True).catalogue
+    #catalogue_cover = Catalogue.objects.get(home_page=True).couv.url
+    #catalogue_link = Catalogue.objects.get(home_page=True).lien.url
     context = {
         'seances' : seances,
         'page_obj' : page_obj,
-        'catalogue_cover' : catalogue_cover,
-        'catalogue_link' : catalogue_link,
+        #'catalogue_cover' : catalogue_cover,
+        #'catalogue_link' : catalogue_link,
     }
     return render(request, 'seances/home.html', context)
 
-def listing(request): #  this view returns all the screenings in the dbase + research form
+def listing(request, populated=0, seance_id=None): #  this view returns all the screenings in the dbase + research form
+    for elt in Seance.objects.all():
+        #  comparing seance's date (converted into an aware datetime.datetime object,
+        #  with 23h59 set as time so the seance disapears only the day after)
+        #  with timezone aware datetime.datetime."now" object, set on UTC+2 (Paris)
+        if datetime.datetime(elt.date.year, elt.date.month, elt.date.day, 23, 59, tzinfo=pytz.timezone('Europe/Paris')) < pytz.utc.localize(datetime.datetime.utcnow()).astimezone(pytz.timezone('Europe/Paris')):
+            elt.delete()
     query = request.GET.get('query')
+    if populated == '1':  # populated == 1 when a seance is clicked on, on the home page. It populates the form
+        # with this particular seance's date and location.
+        query = True
+        request.GET = request.GET.copy()
+        request.GET['Lieu'] = Seance.objects.get(pk=seance_id).lieu
+        request.GET['Date'] = Seance.objects.get(pk=seance_id).date
     if query:
         seances = []
         form = FormSeances(request.GET)
@@ -32,19 +45,19 @@ def listing(request): #  this view returns all the screenings in the dbase + res
             date = str(form.cleaned_data['Date'])
             film = str(form.cleaned_data['Film'])
             if lieu and date and film:  # i did not find a better way of coding this filter mechanism, TODO find a better way with less code!
-                seances = Seance.objects.filter(lieu=lieu, date=date, projection__film__titre=film)
+                seances = Seance.objects.filter(lieu=lieu, date=date, projection__film__titre=film).order_by('date')
             if lieu and date and not film:  # 2
-                seances = Seance.objects.filter(lieu=lieu, date=date)
+                seances = Seance.objects.filter(lieu=lieu, date=date).order_by('date')
             if lieu and film and not date:  # 2
-                seances = Seance.objects.filter(lieu=lieu, projection__film__titre=film)
+                seances = Seance.objects.filter(lieu=lieu, projection__film__titre=film).order_by('date')
             if date and film and not lieu:  # 2
-                seances = Seance.objects.filter(date=date, projection__film__titre=film)
+                seances = Seance.objects.filter(date=date, projection__film__titre=film).order_by('date')
             if date and not film and not lieu:
-                seances = Seance.objects.filter(date=date)
+                seances = Seance.objects.filter(date=date).order_by('date')
             if film and not date and not lieu:
-                seances = Seance.objects.filter(projection__film__titre=film)
+                seances = Seance.objects.filter(projection__film__titre=film).order_by('date')
             if lieu and not film and not date:
-                seances = Seance.objects.filter(lieu=lieu)
+                seances = Seance.objects.filter(lieu=lieu).order_by('date')
             if len(seances) == 0:
                 message = "Désolé, il n'existe aucune séance correspondant à ces critères !"
             else:
@@ -91,12 +104,6 @@ def content(request, value):
         return render(request, 'seances/content/emploi.html')
     elif int(value) == 6:
         return render(request, 'seances/content/rejoindre.html')
-    elif int(value) == 7:
-        catalogues = Catalogue.objects.all()
-        context = {
-            'catalogues' : catalogues
-        }
-        return render(request, 'seances/content/catalogues.html', context)
     elif int(value) == 8:
         return render(request, 'seances/content/plein-air.html')
     elif int(value) == 9:

@@ -2,45 +2,41 @@
  {% extends 'seances/base.html' %}
 
  {% block content %}
-<div class="col-lg-12">
+<div class="col-12">
     <hr>
-    <h2 class="intro-text text-center">Les prochaines séances :
+    <h2 class="intro-text text-center">Les prochaines séances
     </h2>
     <hr class="detail-separator">
 </div>
 
-        <div class="col-sm-2" id="catalogue">
-            <div class="sliderchep">
-                    <a href="{{ catalogue_link }}" download> <!--insérer lien avalide de dl du catalogue -->
-                        <img class="imgchep" src="{{ catalogue_cover }}" />
-                    <a/>
-            </div>
-            <a href="{{ catalogue_link }}" download>
-                <h3>Catalogue du mois</h3>
-            </a>
-        </div>
+<div class="row">
 {% for seance in page_obj %}
-        <div class="col-sm-2 text-center">
-            <div class="sliderchep">
-                {% for projection in seance.projection_set.all %}
-                    <a href="{% url 'seances:detail' film_id=projection.film.id %}">
-                        <img class="imgchep" src="{{ projection.film.picture }}" />
-                    <a/>
-                {% endfor %}
-            </div>
-            <h3><a href="">{{ seance.date }}</a></h3>
-            <h4><a href="">{{ seance.lieu }}</a></h4>
+        <div class="col-12 col-md-2 card text-center bg-transparent" style="width: 18rem;">
+            <!-- below we only get the first photo on the proj list of the seance -->
+            <a class="link_populated_home_page" href="{% url 'seances:listing2' populated=1 seance_id=seance.id %}">
+            {% if seance.projection_set.all.0.film.photo %}
+                <img class="card-img-top" src="{{ seance.projection_set.all.0.film.photo.url }}" />
+            {% endif %}
+            <h3 class="card-title">{{ seance.date }}</h3><!-- mettre un lien vers la page 'listing' avec une ancre sur ce choix de lieu ou de date -->
+        <h4 class="card-subtitle">{{ seance.lieu }}</h4></a><!-- mettre un lien vers la page 'listing' avec une ancre sur ce choix de lieu ou de date -->
             {% for projection in seance.projection_set.all %}
-                <h6><a href="{% url 'seances:detail' film_id=projection.film.id %}">{{ projection.film.titre }}</a></h6>
+                <p class="card-text">
+                    <a id="home-card-link" href="{% url 'seances:detail' film_id=projection.film.id %}">
+                        {{ projection.film.titre }}
+                    </a>
+                </p>
             {% endfor %}
         </div>
 {% endfor %}
+</div> <!-- row -->
 
 <div class="col-lg-12">
 
-    <a id="voir_toutes" href="{% url 'seances:listing' %}">
-        <h6>Voir toutes les séances à venir</h6>
-    </a>
+    <h6>
+        <a id="voir_toutes" href="{% url 'seances:listing' %}">
+            Voir toutes les séances à venir
+        </a>
+    </h6>
 </div>
 
 {% endblock %}

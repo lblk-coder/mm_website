@@ -1,0 +1,6 @@
+features or elts added/modified since last commit (current branch = "releaseV1" (afeter merged with frontendrestart)) :
+- finished carousel, made the link between home page and CarouselSlide objects
+- I created a custom context processor so the carousel would work
+- updated 'listing' view so it deletes seances when they are over
+- modified fields and display on admin page
+- logo behind title on base.html
