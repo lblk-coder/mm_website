@@ -452,11 +452,22 @@ a:hover {
     }
 }
 
-.socialmedia-block-container {
-    position: absolute;
-    margin-top: 3%;
-    margin-left: 2%;
-    z-index: 2;
+@media (max-width:640px) {
+    .socialmedia-block-container {
+        position: absolute;
+        margin-top: -55px;
+        margin-left: 85%;
+        z-index: 2;
+    }
+}
+
+@media (min-width: 641px) {
+    .socialmedia-block-container {
+        position: absolute;
+        margin-top: 3%;
+        margin-left: 2%;
+        z-index: 2;
+    }
 }
 
 .socialmedia-icon {
@@ -494,4 +505,16 @@ footer {
 
 .link_populated_home_page:hover {
     color: rgba(0,0,0,1);
+}
+
+/* defines the dimensions of carousel's slides' images */
+.d-block {
+    object-fit: scale-down;
+    width: 100%;
+    height: 193px;
+}
+
+/* logo behind title on base.html */
+.brand-and-adress-bar {
+    background: no-repeat center/15% url(../img/logo_trans2.png);
 }

@@ -75,6 +75,8 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
+                'seances.context_processors.carousel',  # Customed context processor to load
+                #  on each page of the website the images of the carousel, uploaded by user.
             ],
         },
     },
@@ -155,3 +157,4 @@ STATICFILES_DIRS = [
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 MEDIA_URL = '/media/'
+

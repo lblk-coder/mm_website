@@ -34,6 +34,7 @@ class Projection(models.Model):
     heure = models.TimeField()
     animation = models.TextField(max_length=10000, blank=True, default='')
     tarif = models.FloatField(blank=True, null=True)
+    tarif_reduit = models.FloatField(blank=True, null=True, verbose_name='Tarif réduit')
 
     def __str__(self):
         msg = "Projection de "+str(self.film)+" à "+str(self.seance.lieu)+" le "+str(self.seance.date)+" à "+str(self.heure)
@@ -41,7 +42,11 @@ class Projection(models.Model):
 
 class CarouselSlider(models.Model):
     image = models.ImageField(blank=True, null=True)  # the pic used as slider
+    date_d_ajout = models.DateField(auto_now=True, verbose_name='Date d\'ajout')
+    nom = models.CharField(max_length=200, blank=True, default='')
 
+    class Meta:
+        verbose_name = 'Images de carrousel'
 #    def __str__(self):
 #        return self.titre
 

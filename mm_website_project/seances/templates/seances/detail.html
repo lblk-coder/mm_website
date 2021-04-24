@@ -28,7 +28,7 @@
                 </p>
                 <ul>
                     {% for projection in projections %}
-                        <li><span class="seance-bold">le {{ projection.seance.date }} à {{ projection.seance.lieu }} {{ projection.heure }}. Tarif : {% if projection.tarif %} {{ projection.tarif }} {% endif %} € </span><br>
+                        <li><span class="seance-bold">le {{ projection.seance.date }} à {{ projection.seance.lieu }} {{ projection.heure }}. Tarif : {% if projection.tarif %} {{ projection.tarif }} {% endif %} € {% if projection.tarif_reduit %}; Tarif réduit : {{ projection.tarif_reduit }} € {% endif %} </span><br>
                     {% if projection.seance.plein_air %}
                         !!! Séance en plein-air !!! <br>
                     {% endif %}
