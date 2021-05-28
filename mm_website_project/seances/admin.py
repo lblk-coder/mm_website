@@ -18,7 +18,7 @@ class SeanceAdmin(admin.ModelAdmin):
     ordering = ['date']
     pass
 
-class SeanceProjectionInline(admin.StackedInline):
+class SeanceProjectionInline(admin.TabularInline):
     model = Projection
     extra = 0
 
