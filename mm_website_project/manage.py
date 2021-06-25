@@ -8,6 +8,8 @@
 #  - activate/deactivate STATIC_ROOT in settings.py ? Change "asset" url to "static" as it was before ?
 #  more precise infos in "dev_diary", 24.04.2021 log entry.
 
+# test 25.06.21, 14h25
+
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
