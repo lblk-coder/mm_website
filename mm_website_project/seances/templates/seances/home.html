@@ -17,10 +17,10 @@
             {% if seance.projection_set.all.0.film.photo %}
                 <img class="card-img-top" src="{{ seance.projection_set.all.0.film.photo.url }}" />
             {% endif %}
-            <h3 class="card-title">{{ seance.date }}</h3><!-- mettre un lien vers la page 'listing' avec une ancre sur ce choix de lieu ou de date -->
-        <h4 class="card-subtitle">{{ seance.lieu }}</h4></a><!-- mettre un lien vers la page 'listing' avec une ancre sur ce choix de lieu ou de date -->
+            <h3 class="card-title h3datelieu">{{ seance.date }}</h3><!-- mettre un lien vers la page 'listing' avec une ancre sur ce choix de lieu ou de date -->
+        <h4 class="card-subtitle h3datelieu h3lieu">{{ seance.lieu }}</h4></a><!-- mettre un lien vers la page 'listing' avec une ancre sur ce choix de lieu ou de date -->
             {% for projection in seance.projection_set.all %}
-                <p class="card-text">
+                <p class="card-text" id="homecardtext">
                     <a id="home-card-link" href="{% url 'seances:detail' film_id=projection.film.id %}">
                         {{ projection.film.titre }}
                     </a>

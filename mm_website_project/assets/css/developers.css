@@ -1,8 +1,28 @@
+@font-face {
+    font-family: monoidBold;
+    src: url('../fonts/Monoid-Bold.ttf')
+}
+
+@font-face {
+    font-family: monoidRegular;
+    src: url('../fonts/Monoid-Regular.ttf')
+}
+
+@font-face {
+    font-family: monoidItalic;
+    src: url('../fonts/Monoid-Italic.ttf')
+}
+
+@font-face {
+    font-family: monoidRetina;
+    src: url('../fonts/Monoid-Retina.ttf')
+}
+
 /* below are the basic design that was set on the business casual theme */
 
 body {
     font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
-    background: url('../img/rouge.jpg') no-repeat center center fixed;
+    background: url('../img/couleur-bleu-bondi.jpg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
@@ -16,7 +36,7 @@ h4,
 h5,
 h6 {
     text-transform: uppercase;
-    font-family: "Josefin Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: monoidRegular, "Josefin Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 700;
     letter-spacing: 1px;
 }
@@ -115,8 +135,8 @@ footer p {
         padding: 30px 0 10px;
         text-align: center;
         text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-        font-family: "Josefin Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
-        font-size: 5em;
+        font-family: monoidRegular, "Josefin Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
+        font-size: 3em;
         font-weight: 700;
         line-height: normal;
         color: #fff;
@@ -517,4 +537,26 @@ footer {
 /* logo behind title on base.html */
 .brand-and-adress-bar {
     background: no-repeat center/15% url(../img/logo_trans2.png);
+}
+
+/* below, modifying fonts and style of title and text */
+.h3datelieu { /* homepage */
+    font-family: monoidBold;
+    font-size: 1em;
+    text-transform: lowercase;
+}
+
+.h3lieu { /* homepage */
+    text-transform: uppercase;
+}
+
+#home-card-link { /* homepage */
+    font-family: monoidRegular;
+    font-size: 0.7em;
+}
+
+#homecardtext { /* homepage */
+    margin-top: 20px;
+    margin-bottom: 15px;
+    line-height: 1em;
 }
