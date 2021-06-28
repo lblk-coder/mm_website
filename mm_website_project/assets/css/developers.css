@@ -631,3 +631,8 @@ footer {
 .bold-card-presentation {
     font-weight: bolder;
 }
+
+/* properties of 'festival ouvre l'oeil' 'ciné-plein-air' and 'mois du doc' thumbnails */
+.macaron {
+    width: 80px;
+}

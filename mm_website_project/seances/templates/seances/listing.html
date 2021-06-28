@@ -1,6 +1,6 @@
 <!-- page de liste de toutes les séances, passées ou à venir -->
 {% extends 'seances/base.html' %}
-
+{% load static %}
 {% block content %}
 <div class="col-lg-12">
     <hr>
@@ -26,13 +26,13 @@
             <div class="col-12">
                 <h2>le {{ seance.date }} à {{ seance.lieu }}</h2>
                     {% if seance.plein_air %}
-                    <h4>!!! Séance en plein-air !!! </h4>
+                    <img src="{% static 'img/macaron_plein_air_NOIR_AVEC_TEXTE.png' %}" alt="Séance en plein air" title="Séance en plein air" class="macaron">
                     {% endif %}
                     {% if seance.festival %}
-                    <h4>!!! Festival Ouvre l'Oeil !!!</h4>
+                    <img src="{% static 'img/macaron_ouvre_l_oeil_NOIR_AVEC_TEXTE.png' %}" alt="Séance du festival Ouvre l'Œil" title="Séance du festival Ouvre l'Œil" class="macaron">
                     {% endif %}
                     {% if seance.mois_du_doc %}
-                    <h4>!!! Mois du doc !!!</h4>
+                    <img src="{% static 'img/macaron_mois_du_doc_NOIR_AVEC_TEXTE.png' %}" alt="Séance du festival Mois du doc" title="Séance du festival Mois du doc" class="macaron">
                     {% endif %}
             </div> <!-- end of col-12 -->
     </div> <!-- end of row -->
