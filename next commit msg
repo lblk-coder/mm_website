@@ -1,2 +1,5 @@
-features or elts added/modified since last commit (current branch = 'develop') :
-- test test 26/05/2021 11:45
+features or elts added/modified since last commit (current branch = 'master') :
+- text is now justified on 'seances' page
+- margin-bottom on 'seances' page's cards
+- text is more "aéré", and some elements are bolds, on this same page
+- idem on "detail" page

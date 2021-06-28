@@ -12,7 +12,7 @@
         <div class="card col-12 col-md-8 bg-transparent">
             <div class="card-body">
                 {% if film.real %} <h3 class="card-title"> De {{ film.real }}</h3> {% endif %}
-                <p class="card-text">
+                <p class="card-text bold-card-presentation">
                     {% if film.acteurs %} Avec {{ film.acteurs }} {% endif %} <br>
                     {% if film.genre %} {{ film.genre }},{% endif %}
                     {% if film.annee %} {{ film.annee }},{% endif %}
@@ -24,7 +24,9 @@
                     {% if film.synopsis %} {{ film.synopsis }} {% endif %}
                 </p>
                 <p>
-                    Séances de ce film :<br>
+                    <span class="bold-card-presentation">
+                        Séances de ce film :<br>
+                    </span>
                 </p>
                 <ul>
                     {% for projection in projections %}

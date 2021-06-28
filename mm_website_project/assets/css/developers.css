@@ -618,3 +618,15 @@ footer {
 }
 /* end of responsive behavior of movie pics on homepage */
 
+/* display of cards on 'seances' listing page */
+.card-text {
+    text-align: justify;
+}
+
+.card-listing-page {
+    margin-bottom: 90px;
+}
+
+.bold-card-presentation {
+    font-weight: bolder;
+}
