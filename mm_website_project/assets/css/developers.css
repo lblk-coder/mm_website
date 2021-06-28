@@ -560,3 +560,17 @@ footer {
     margin-bottom: 15px;
     line-height: 1em;
 }
+
+/* attemps to make all images on homepage the same size
+.imgcardcustomwrapper {
+    height: 13em;
+}
+
+.card-img-top {
+    height: 100%;
+    width: auto;
+}
+
+.imgcardcustomhyperwrapper {
+}
+*/

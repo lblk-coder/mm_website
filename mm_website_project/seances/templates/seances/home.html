@@ -15,7 +15,11 @@
             <!-- below we only get the first photo on the proj list of the seance -->
             <a class="link_populated_home_page" href="{% url 'seances:listing2' populated=1 seance_id=seance.id %}">
             {% if seance.projection_set.all.0.film.photo %}
-                <img class="card-img-top" src="{{ seance.projection_set.all.0.film.photo.url }}" />
+                <div class="imgcardcustomhyperwrapper"> <!-- attemps to make all images on homepage the same size -->
+                    <div class="imgcardcustomwrapper"> <!-- attemps to make all images on homepage the same size -->
+                        <img class="card-img-top" src="{{ seance.projection_set.all.0.film.photo.url }}" />
+                    </div>
+                </div>
             {% endif %}
             <h3 class="card-title h3datelieu">{{ seance.date }}</h3><!-- mettre un lien vers la page 'listing' avec une ancre sur ce choix de lieu ou de date -->
         <h4 class="card-subtitle h3datelieu h3lieu">{{ seance.lieu }}</h4></a><!-- mettre un lien vers la page 'listing' avec une ancre sur ce choix de lieu ou de date -->
