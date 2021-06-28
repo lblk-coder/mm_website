@@ -632,6 +632,10 @@ footer {
     font-weight: bolder;
 }
 
+.not-justified-card-presentation {
+    text-align: left;
+}
+
 /* properties of 'festival ouvre l'oeil' 'ciné-plein-air' and 'mois du doc' thumbnails */
 .macaron {
     width: 80px;

@@ -1,5 +1,5 @@
 {% extends 'seances/base.html' %}
-
+{% load static %}
 {% block content %}
 <hr>
     <h1 class="intro-text text-center">{{ film.titre }}</h1>
@@ -12,14 +12,16 @@
         <div class="card col-12 col-md-8 bg-transparent">
             <div class="card-body">
                 {% if film.real %} <h3 class="card-title"> De {{ film.real }}</h3> {% endif %}
-                <p class="card-text bold-card-presentation">
-                    {% if film.acteurs %} Avec {{ film.acteurs }} {% endif %} <br>
-                    {% if film.genre %} {{ film.genre }},{% endif %}
-                    {% if film.annee %} {{ film.annee }},{% endif %}
-                    {% if film.pays %} {{ film.pays }},{% endif %}
-                    {% if film.duree %} {{ film.duree }} minutes {% endif %} <br>
-                    {% if film.age %} À partir de {{ film.age }} ans {% endif %} <br>
-                </p>
+                <div class="not-justified-card-presentation">
+                    <p class="card-text bold-card-presentation not-justified-card-presentation">
+                        {% if film.acteurs %} Avec {{ film.acteurs }} {% endif %} <br>
+                        {% if film.genre %} {{ film.genre }},{% endif %}
+                        {% if film.annee %} {{ film.annee }},{% endif %}
+                        {% if film.pays %} {{ film.pays }},{% endif %}
+                        {% if film.duree %} {{ film.duree }} minutes {% endif %} <br>
+                        {% if film.age %} À partir de {{ film.age }} ans {% endif %} <br>
+                    </p>
+                </div>
                 <p class="card-text">
                     {% if film.synopsis %} {{ film.synopsis }} {% endif %}
                 </p>
@@ -32,15 +34,16 @@
                     {% for projection in projections %}
                         <li><span class="seance-bold">le {{ projection.seance.date }} à {{ projection.seance.lieu }} {{ projection.heure }}. Tarif : {% if projection.tarif %} {{ projection.tarif }} {% endif %} € {% if projection.tarif_reduit %}; Tarif réduit : {{ projection.tarif_reduit }} € {% endif %} </span><br>
                     {% if projection.seance.plein_air %}
-                        !!! Séance en plein-air !!! <br>
+                        <img src="{% static 'img/macaron_plein_air_NOIR_AVEC_TEXTE.png' %}" alt="Séance en plein air" title="Séance en plein air" class="macaron">
                     {% endif %}
                     {% if projection.seance.festival %}
-                        !!! Festival Ouvre l'Oeil !!! <br>
+                        <img src="{% static 'img/macaron_ouvre_l_oeil_NOIR_AVEC_TEXTE.png' %}" alt="Séance du festival Ouvre l'Œil" title="Séance du festival Ouvre l'Œil" class="macaron">
                     {% endif %}
                         {% if projection.seance.mois_du_doc %}
-                    !!! Mois du doc !!! <br>
+                        <img src="{% static 'img/macaron_mois_du_doc_NOIR_AVEC_TEXTE.png' %}" alt="Séance du festival Mois du doc" title="Séance du festival Mois du doc" class="macaron">
                     {% endif %}
                         </li>
+                        <br>
                     {% endfor %}
                 </ul>
             </div> <!-- card-body -->
