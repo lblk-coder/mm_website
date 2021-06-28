@@ -551,26 +551,65 @@ footer {
 }
 
 #home-card-link { /* homepage */
-    font-family: monoidRegular;
+    font-family: "Open Sans";
     font-size: 0.7em;
 }
 
 #homecardtext { /* homepage */
-    margin-top: 20px;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     line-height: 1em;
 }
 
-/* attemps to make all images on homepage the same size
-.imgcardcustomwrapper {
-    height: 13em;
+.textfilmstitles { /* homepage */
+    margin-top: 25px;
+    margin-bottom: 25px;
 }
 
-.card-img-top {
-    height: 100%;
-    width: auto;
+/* below is the responsive behavior of home page movies pictures */
+@media (min-width: 768px) {
+    .imghomepage {
+        object-fit: contain;
+        height: 130px;
+    }
+    .textdatelieuwrapper { /* gives date and lieu wrapper a fixed size so the text is aligned */
+        height: 100px;
+    }
 }
 
-.imgcardcustomhyperwrapper {
+@media (min-width: 856px) {
+    .imghomepage {
+        object-fit: contain;
+        height: 200px;
+    }
+    .textdatelieuwrapper {
+        height: 95px;
+    }
 }
-*/
+
+@media (min-width: 1110px) {
+    .imghomepage {
+        object-fit: contain;
+        height: 300px;
+    }
+    .textdatelieuwrapper {
+        height: 70px;
+    }
+}
+
+@media (min-width: 1500px) {
+    .imghomepage {
+        object-fit: contain;
+        height: 400px;
+    }
+    .textdatelieuwrapper {
+        height: 55px;
+    }
+}
+
+@media (max-width: 768px) {
+    .textdatelieuwrapper {
+        margin-top: 40px;
+    }
+}
+/* end of responsive behavior of movie pics on homepage */
+
