@@ -641,7 +641,30 @@ footer {
     width: 80px;
 }
 
+/* used on "mentions légales" page */
+.justified-p {
+    text-align: justify;
+}
+
+.bolder-span {
+    font-weight: bolder;
+}
+
+
 /* properties of modal for newsletter */
 .modal-title {
     text-transform: none;
+}
+
+.mentions_form {
+    font-size: 0.8em;
+    text-align: center;
+}
+
+.modal-header {
+    background: url('../img/couleur-bleu-bondi.jpg') no-repeat center center fixed;
+}
+
+.modal-title {
+    color: #FFFFFF;
 }
