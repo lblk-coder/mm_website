@@ -25,3 +25,6 @@ class FormSeances(forms.Form):  #  this form is used to filter the seances on th
     Lieu = forms.ChoiceField(choices=location_dict, required=False)
     Date = forms.ChoiceField(choices=date_dict, required=False)
     Film = forms.ChoiceField(choices=film_dict, required=False)
+
+class NlForm(forms.Form):  # this form is used to register new emails to the newsletter
+    email = forms.EmailField(required=True, label="Votre adresse mail")

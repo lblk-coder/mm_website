@@ -28,7 +28,8 @@ def listing(request, populated=0, seance_id=None): #  this view returns all the 
         #  comparing seance's date (converted into an aware datetime.datetime object,
         #  with 23h59 set as time so the seance disapears only the day after)
         #  with timezone aware datetime.datetime."now" object, set on UTC+2 (Paris)
-        if datetime.datetime(elt.date.year, elt.date.month, elt.date.day, 23, 59, tzinfo=pytz.timezone('Europe/Paris')) < pytz.utc.localize(datetime.datetime.utcnow()).astimezone(pytz.timezone('Europe/Paris')):
+        if datetime.datetime(elt.date.year, elt.date.month, elt.date.day, 23, 59,
+                             tzinfo=pytz.timezone('Europe/Paris')) < pytz.utc.localize(datetime.datetime.utcnow()).astimezone(pytz.timezone('Europe/Paris')):
             elt.delete()
     query = request.GET.get('query')
     if populated == '1':  # populated == 1 when a seance is clicked on, on the home page. It populates the form
@@ -45,7 +46,9 @@ def listing(request, populated=0, seance_id=None): #  this view returns all the 
             date = str(form.cleaned_data['Date'])
             film = str(form.cleaned_data['Film'])
             if lieu and date and film:  # i did not find a better way of coding this filter mechanism, TODO find a better way with less code!
-                seances = Seance.objects.filter(lieu=lieu, date=date, projection__film__titre=film).order_by('date')
+                seances = Seance.objects.filter(lieu=lieu,
+                                                date=date,
+                                                projection__film__titre=film).order_by('date')
             if lieu and date and not film:  # 2
                 seances = Seance.objects.filter(lieu=lieu, date=date).order_by('date')
             if lieu and film and not date:  # 2

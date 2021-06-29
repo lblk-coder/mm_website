@@ -640,3 +640,8 @@ footer {
 .macaron {
     width: 80px;
 }
+
+/* properties of modal for newsletter */
+.modal-title {
+    text-transform: none;
+}
