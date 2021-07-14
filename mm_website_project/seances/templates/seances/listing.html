@@ -36,7 +36,7 @@
                     {% endif %}
             </div> <!-- end of col-12 -->
     </div> <!-- end of row -->
-{% for projection in seance.projection_set.all %}
+{% for projection in seance.projection_set.all|dictsort:"heure" %}
     <div class="row seance-listing">
         <div class="col-12 col-md-4">
             <img class="img-listing" src="{{ projection.film.photo.url }}" alt="{{ projection.film.titre }}">

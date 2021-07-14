@@ -18,10 +18,18 @@ class HomePageTestCase(TestCase):
             heure=datetime.time(13, 00, 00, tzinfo=pytz.timezone('Europe/Paris'))
         )
 
+    # tests if home page returns 200
     def test_home_page(self):
         response = self.client.get(reverse('home'))
         self.assertEqual(response.status_code, 200)
 
-    def test_home_page_objects_exist(self):
+    # tests if a seance exists on home page's context after being created
+    def test_home_page_seance_is_in_context(self):
         response = self.client.get(reverse('home'))
         self.assertIsNotNone(response.context['seances'])
+
+    # tests if a page_obj exists on home page's context when a seance exists
+    def test_home_page_page_obj_is_in_context(self):
+        response = self.client.get(reverse('home'))
+        self.assertIsNotNone(response.context['page_obj'])
+

@@ -13,13 +13,9 @@ def home(request):
             seances.append(seance)  # si séance pas passée, on l'ajoute à la liste
     paginator = Paginator(seances, 6)  # pour ne présenter que 6 séances max sur la page d'accueil
     page_obj = paginator.page(request.GET.get('page', '1'))
-    #catalogue_cover = Catalogue.objects.get(home_page=True).couv.url
-    #catalogue_link = Catalogue.objects.get(home_page=True).lien.url
     context = {
         'seances' : seances,
         'page_obj' : page_obj,
-        #'catalogue_cover' : catalogue_cover,
-        #'catalogue_link' : catalogue_link,
     }
     return render(request, 'seances/home.html', context)
 
@@ -45,7 +41,7 @@ def listing(request, populated=0, seance_id=None): #  this view returns all the 
             lieu = str(form.cleaned_data['Lieu'])  #getting the data form the form, converting it in str
             date = str(form.cleaned_data['Date'])
             film = str(form.cleaned_data['Film'])
-            if lieu and date and film:  # i did not find a better way of coding this filter mechanism, TODO find a better way with less code!
+            if lieu and date and film:  # i did not find a better way of coding this filter mechanism
                 seances = Seance.objects.filter(lieu=lieu,
                                                 date=date,
                                                 projection__film__titre=film).order_by('date')
