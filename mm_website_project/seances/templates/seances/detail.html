@@ -7,7 +7,9 @@
 <div class="container-fluid">
     <div class="row seance-listing">
         <div class="col-12 col-md-4">
+            {% if film.photo %}
             <img src="{{ film.photo.url }}" alt="{{ film.titre }}" class="img-listing">
+            {% endif %}
         </div>
         <div class="card col-12 col-md-8 bg-transparent">
             <div class="card-body">

@@ -39,7 +39,9 @@
 {% for projection in seance.projection_set.all|dictsort:"heure" %}
     <div class="row seance-listing">
         <div class="col-12 col-md-4">
+            {% if projection.film.photo %}
             <img class="img-listing" src="{{ projection.film.photo.url }}" alt="{{ projection.film.titre }}">
+            {% endif %}
         </div>
         <div class="card col-12 col-md-8 bg-transparent card-listing-page">
             <div class="card-body">

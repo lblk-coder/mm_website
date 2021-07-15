@@ -68,6 +68,16 @@ def listing(request, populated=0, seance_id=None): #  this view returns all the 
                 'form' : form,
             }
             return render(request, 'seances/listing.html', context)
+        else:
+            form = FormSeances()
+            seances = Seance.objects.all().order_by('date')
+            film = Film.objects.all().order_by('titre')
+            context = {
+                'seances': seances,
+                'film': film,
+                'form': form,
+            }
+            return render(request, 'seances/listing.html', context)
     else:
         form = FormSeances()
         seances = Seance.objects.all().order_by('date')
