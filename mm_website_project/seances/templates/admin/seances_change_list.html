@@ -1,0 +1,11 @@
+{% extends 'admin/change_list.html' %}
+{% block object-tools %}
+
+<form id="allocine-form" method="POST">
+    {% csrf_token %}
+    <input name="allocine">
+    <button class="button" type="submit">Créer un film à partir d'une page allociné</button>
+
+</form>
+
+{% endblock object-tools %}

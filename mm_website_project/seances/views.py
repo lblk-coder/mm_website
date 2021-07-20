@@ -5,6 +5,15 @@ from django.core.paginator import Paginator
 from .models import Film, Seance, Projection, CarouselSlider
 from .forms import FormSeances
 
+# below are the imports for scrapping view
+from bs4 import BeautifulSoup
+import requests
+import re
+import pickle
+import json
+import time
+import os
+
 def home(request):
     seances = []  # une liste de séances vide
     today = datetime.date.today()  # ici et dessous on compare si la séance est passée ou pas
@@ -133,3 +142,105 @@ def content(request, value):
         return render(request, 'seances/content/lyceens-apprentis.html')
     elif int(value) == 17:
         return render(request, 'seances/content/festival.html')
+
+# this view gets the infos of a film from its allociné page
+def scrap_film_nfos(request, film_url):
+    url = film_url
+
+    reponse = requests.get(url)
+    soup = BeautifulSoup(reponse.text, 'html.parser')
+
+    # below is the regex to find the date
+    date_regex = r"^[A-Za-z0-9._ =-]*date blue-link$"
+    # compile the regex, I don't really understand why it matters yet...
+    date_srch = re.compile(date_regex)
+
+    # select the precise part of the <span> we're interested in
+    # since there are some spare spaces before and after the date.
+    for elt in soup.find_all('span', date_srch):
+        date = elt.string[-21:-17]
+    if not date:
+        date = soup.find_all('span', 'date')[0].string[-4:]
+
+    # this is a function we develop to get everything there is in this script
+    # it find the only script that contains the word "duration" in its string
+    def getinfos():
+        for elt in soup.find_all('script'):
+            try:
+                result = re.search('duration', elt.string)
+            except:
+                continue
+            if result:
+                return result
+
+    # we use the function defined above to get raw infos
+    # then we split it to have separated strings to iter
+    # within.
+    infos = getinfos()
+    splitted_infos = infos.string.split()
+
+    # this function will remove commas and brackets from extracted infos
+    # that we got from the html strings.
+    def remove_commas_and_brackets(word):
+        word = word.replace(",", "")
+        word = word.replace('"', "")
+        return word
+
+    # below, we extract each separate infos
+    i = 0
+    # these boolean below exist to keep only first iteration
+    # of info (since there might be the same elsewhere in the html
+    # page, without the same presentation).
+    duree_bool = False
+    genre_bool = False
+    descrip_bool = False
+    dir_bool = False
+    act_bool = False
+    for elt in splitted_infos:
+        if elt == '"duration":' and duree_bool == False:  # durée
+            duree_bool = True
+            duree = splitted_infos[i + 1][3:8]
+            duree = (int(duree[1]) * 60) + int(duree[-2::])  # converting duration from
+            # HH:MM to minutes only.
+        elif elt == '"genre":' and genre_bool == False:  # genre
+            genre_bool = True
+            i2 = i + 2
+            genre = ''
+            genre += remove_commas_and_brackets(splitted_infos[i2]) + ", "
+            while splitted_infos[i2 + 1] != ']':
+                i2 += 1
+                genre += remove_commas_and_brackets(splitted_infos[i2])
+                if splitted_infos[i2 + 1] != ']':
+                    genre += ', '
+        elif elt == '"description":' and descrip_bool == False:  # synopsis
+            descrip_bool = True
+            i1 = i + 1
+            synopsis = ''
+            synopsis += remove_commas_and_brackets(splitted_infos[i1]) + " "
+            while splitted_infos[i1 + 1] != '"director":':
+                i1 += 1
+                synopsis += remove_commas_and_brackets(splitted_infos[i1]) + " "
+            synopsis = synopsis[:-2]
+        elif elt == '"director":' and dir_bool == False:  # réalisateur.rice
+            dir_bool = True
+            i7 = i + 7
+            director = ''
+            while splitted_infos[i7] != '}':
+                director += remove_commas_and_brackets(splitted_infos[i7]) + " "
+                i7 += 1
+            director = director[:-1]
+        elif elt == '"actor":' and act_bool == False:  # acteur.rice.s
+            act_bool = True
+            i8 = i + 8
+            actors = ''
+            end = False
+            while end == False:
+                while splitted_infos[i8] != '},' and splitted_infos[i8] != '}':
+                    actors += remove_commas_and_brackets(splitted_infos[i8]) + " "
+                    i8 += 1
+                actors = actors[:-1] + ", "
+                if splitted_infos[i8 + 1] == ']':
+                    end = True
+                i8 += 7
+            actors = actors[:-2]
+        i += 1

@@ -1,7 +1,11 @@
 from django.contrib import admin
 
 from .models import Seance, Film, Projection, CarouselSlider
-# Register your models here.
+from django.contrib.auth.models import Group
+
+admin.site.unregister(Group)
+
+admin.site.site_header = "Page d'administration du site de Mondes et Multitudes"
 
 class ProjectionInline(admin.StackedInline):
     model = Projection
@@ -27,6 +31,8 @@ class FilmAdmin(admin.ModelAdmin):
     inlines = [SeanceProjectionInline,]
     list_display = ('titre',)
     ordering = ['titre']
+    exclude = ('page_allocine',)
+    change_list_template = 'admin/seances_change_list.html'
     pass
 
 @admin.register(CarouselSlider)
