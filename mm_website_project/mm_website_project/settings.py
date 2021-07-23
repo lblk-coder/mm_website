@@ -31,15 +31,17 @@ DEBUG = True  # development settings
 ALLOWED_HOSTS = [
     'lblk.pythonanywhere.com',  # production host
     '127.0.0.1',  # development host
+    'testserver',  # added to test the app through django shell, with a terminal
+    # so I can understand the logic of TestCase, etc.
 ]
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'django.contrib.auth',
     'seances.apps.SeancesConfig',
     'django.contrib.admin',
-    'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -77,6 +79,7 @@ TEMPLATES = [
                 'django.template.context_processors.media',
                 'seances.context_processors.carousel',  # Customed context processor to load
                 #  on each page of the website the images of the carousel, uploaded by user.
+                'seances.context_processors.nlform',  # this one is for newsletter registration.
             ],
         },
     },
@@ -158,3 +161,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 MEDIA_URL = '/media/'
 
+# below are gmail settings for newsletter registering
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'loiclegros.eaclyon@gmail.com'
+EMAIL_HOST_PASSWORD = 'boBail2021!?'  # this is specific to dev, it's different in prod environment
