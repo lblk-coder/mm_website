@@ -21,16 +21,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'jo#s$f_c)k=*u9*o07-6b^m8x+ycire&2v*_zv=pi!+r^e7l&2'
+SECRET_KEY = '#!)c1(2qfphe_(m+va1mn2ti57!_9mnt1jr1(7+t4c7w9p_^t('
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
 DEBUG = False  # production settings
-#DEBUG = True  # development settings
+#DEBUG = True
 
 ALLOWED_HOSTS = [
-    'loiclg.pythonanywhere.com',  # production host
-#    '127.0.0.1',  # development host
+    'lblk.pythonanywhere.com',
 ]
 
 
@@ -75,8 +74,6 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
-                'seances.context_processors.carousel',  # Customed context processor to load
-                #  on each page of the website the images of the carousel, uploaded by user.
             ],
         },
     },
@@ -92,7 +89,7 @@ WSGI_APPLICATION = 'mm_website_project.wsgi.application'
 #DATABASES = {
 #    'default': {
 #        'ENGINE': 'django.db.backends.postgresql',
-#        'NAME': 'mm_website2',
+#        'NAME': 'mm_website',
 #        'USER': 'lblk',
 #        'PASSWORD': '',
 #        'HOST': '',
@@ -100,14 +97,14 @@ WSGI_APPLICATION = 'mm_website_project.wsgi.application'
 #    }
 #}
 
-#Ci-dessous les configurations de la dbase de production
+# Ci-dessous les configurations de la dbase de production
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'loiclg$mm_website_db',
-        'USER': 'loiclg',
+        'NAME': 'lblk$mm_website_db',
+        'USER': 'lblk',
         'PASSWORD': 'Douala12',
-        'HOST': 'loiclg.mysql.pythonanywhere-services.com',
+        'HOST': 'lblk.mysql.pythonanywhere-services.com',
     }
 }
 
@@ -147,14 +144,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_URL = '/static/'  # was set to "static" before 07/04/2021, maybe it was wrong ? I reset it to 'static' on the 24/04/2021, for the prod
+STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static/'),  # was set to "static" before 07/04/2021, maybe it was wrong ? I reset it to 'static' on the 24/04/2021, for the prod
+    os.path.join(BASE_DIR, 'static/'),
 ]
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'assets/') #reactivate in prod ?
+STATIC_ROOT = os.path.join(BASE_DIR, 'assets/')
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 MEDIA_URL = '/media/'
-
