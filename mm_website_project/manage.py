@@ -7,6 +7,9 @@
 #  - activate/deactivate local/remote host (allowed hosts)
 #  - activate/deactivate STATIC_ROOT in settings.py ? Change "asset" url to "static" as it was before ?
 
+# test 16h39 25.06.21, added after I edited gitignore with manage.py and removed it from
+# git index (git rm --cached [file])
+
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
