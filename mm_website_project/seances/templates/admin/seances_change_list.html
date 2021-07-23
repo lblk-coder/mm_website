@@ -1,11 +1,9 @@
 {% extends 'admin/change_list.html' %}
 {% block object-tools %}
 
-<form id="allocine-form" method="POST">
+  <form action="" method="POST" id="scrapy_form">
     {% csrf_token %}
-    <input name="allocine">
-    <button class="button" type="submit">Créer un film à partir d'une page allociné</button>
-
-</form>
+    {{ scrapy_form }}
+  </form>
 
 {% endblock object-tools %}

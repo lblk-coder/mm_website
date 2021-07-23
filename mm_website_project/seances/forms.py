@@ -28,3 +28,6 @@ class FormSeances(forms.Form):  #  this form is used to filter the seances on th
 
 class NlForm(forms.Form):  # this form is used to register new emails to the newsletter
     email = forms.EmailField(required=True, label="Votre adresse mail")
+
+class ScrapyForm(forms.Form):
+    film_url = forms.URLField(help_text="Indiquer ici l'url de la page allociné du film")
