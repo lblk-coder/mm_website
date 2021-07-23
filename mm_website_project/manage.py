@@ -1,13 +1,4 @@
-#!/home/loiclg/.virtualenvs/mm_website-virtualenv/bin/python3.8
-
-#  changes between production and dev repos to make :
-#  - virtual env path in manage.py, set up new venv, and $pip install django, pillow, mysqlclient
-#  - activate prod or dev data base
-#  - activate/deactivate admin tool bar (middleware, installed apps, debug=true/false
-#  - activate/deactivate local/remote host (allowed hosts)
-#  - activate/deactivate STATIC_ROOT in settings.py ? Change "asset" url to "static" as it was before ?
-#  more precise infos in "dev_diary", 24.04.2021 log entry.
-
+#!/home/lblk/.virtualenvs/mm_website-virtualenv/bin/python3.8
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
