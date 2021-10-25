@@ -43,24 +43,15 @@
             <li class="nav-item">
                 <a href="{% url 'seances:listing' %}">Séances</a>
             </li>
-                        <li class="nav-item dropdown size-limit-1">
-                <a class="nav-link" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Organiser une séance
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="{% url 'seances:content' value=6 %}">Rejoindre le circuit</a><br>
-                  <a class="dropdown-item" href="{% url 'seances:content' value=8 %}">Séances en plein-air</a><br>
-                  <a class="dropdown-item" href="{% url 'seances:content' value=9 %}">Ciné-séniors</a><br>
-                  <a class="dropdown-item" href="{% url 'seances:content' value=10 %}">Ciné-patrimoine</a><br>
-                  <a class="dropdown-item" href="{% url 'seances:content' value=11 %}">Ciné-spectacles</a><br>
-                  <a class="dropdown-item" href="{% url 'seances:content' value=12 %}">Séances militantes</a><br>
-                </div>
+            <li class="nav-item">
+                <a href="{% url 'seances:content' value=6 %}">Organiser une séance</a>
             </li>
             <li class="nav-item dropdown size-limit-1">
                 <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Éducation aux images
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{% url 'seances:content' value=7 %}">Présentation générale</a><br>
                     <a class="dropdown-item" href="{% url 'seances:content' value=13 %}">Les ateliers de Louise</a><br>
                     <a class="dropdown-item" href="{% url 'seances:content' value=14 %}">Les dispositifs scolaires</a><br>
                 </div>

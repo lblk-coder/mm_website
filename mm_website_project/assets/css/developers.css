@@ -668,3 +668,7 @@ footer {
 .modal-title {
     color: #FFFFFF;
 }
+
+.smaller-p {
+    font-size: 0.9em;
+}

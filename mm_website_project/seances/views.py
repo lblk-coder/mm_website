@@ -113,16 +113,19 @@ def content(request, value):
         return render(request, 'seances/content/emploi.html')
     elif int(value) == 6:
         return render(request, 'seances/content/rejoindre.html')
-    elif int(value) == 8:
-        return render(request, 'seances/content/plein-air.html')
-    elif int(value) == 9:
-        return render(request, 'seances/content/seniors.html')
-    elif int(value) == 10:
-        return render(request, 'seances/content/patrimoine.html')
-    elif int(value) == 11:
-        return render(request, 'seances/content/spectacles.html')
-    elif int(value) == 12:
-        return render(request, 'seances/content/seances-militantes.html')
+    elif int(value) == 7:
+        return render(request, 'seances/content/education.html')
+# below these pages are deprecated. Wait release of V1.0 of the website to delete code
+#    elif int(value) == 8:
+#        return render(request, 'seances/content/plein-air.html')
+#    elif int(value) == 9:
+#        return render(request, 'seances/content/seniors.html')
+#    elif int(value) == 10:
+#        return render(request, 'seances/content/patrimoine.html')
+#    elif int(value) == 11:
+#        return render(request, 'seances/content/spectacles.html')
+#    elif int(value) == 12:
+#        return render(request, 'seances/content/seances-militantes.html')
     elif int(value) == 13:
         return render(request, 'seances/content/louise.html')
     elif int(value) == 14:
