@@ -43,16 +43,7 @@
             <li class="nav-item">
                 <a href="{% url 'seances:listing' %}">Séances</a>
             </li>
-            <li class="nav-item dropdown size-limit-1">
-                <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Éducation aux images
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{% url 'seances:content' value=13 %}">Les ateliers de Louise</a><br>
-                    <a class="dropdown-item" href="{% url 'seances:content' value=14 %}">Les dispositifs scolaires</a><br>
-                </div>
-            </li>
-            <li class="nav-item dropdown size-limit-1">
+                        <li class="nav-item dropdown size-limit-1">
                 <a class="nav-link" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Organiser une séance
                 </a>
@@ -63,6 +54,15 @@
                   <a class="dropdown-item" href="{% url 'seances:content' value=10 %}">Ciné-patrimoine</a><br>
                   <a class="dropdown-item" href="{% url 'seances:content' value=11 %}">Ciné-spectacles</a><br>
                   <a class="dropdown-item" href="{% url 'seances:content' value=12 %}">Séances militantes</a><br>
+                </div>
+            </li>
+            <li class="nav-item dropdown size-limit-1">
+                <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Éducation aux images
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{% url 'seances:content' value=13 %}">Les ateliers de Louise</a><br>
+                    <a class="dropdown-item" href="{% url 'seances:content' value=14 %}">Les dispositifs scolaires</a><br>
                 </div>
             </li>
             <li class="nav-item size-limit-2">
@@ -175,9 +175,9 @@
         Association Mondes et Multitudes <br>
         7 Route du Moulin, Saint-Cyprien-sur-Dourdou <br>
         12320 – Conques en Rouergue <br>
-        Du lundi au vendredi : 9h-13h/14h-17h
-        09 53 79 93 01
-        mondesetmultitudes@gmail.com
+        Du lundi au vendredi : 9h-13h/14h-17h <br>
+        09 53 79 93 01 <br>
+        mondesetmultitudes@gmail.com <br>
         <a href="{% url 'seances:content' value=4 %}">Mentions légales</a>
     </p>
 </footer>
