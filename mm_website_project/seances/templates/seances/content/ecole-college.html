@@ -1,4 +1,40 @@
 {% extends 'seances/base.html' %}
 {% block content %}
-Écoles et collèges au cinéma
+
+    <h2 class="intro-text text-center">
+        Les Dispositifs Scolaires, qu’est-ce que c’est ?
+    </h2>
+    <p class="color-grey justify">
+        <span class="bolder-span">« Maternelle et Cinéma »</span>, <span class="bolder-span">« École et Cinéma »</span>, <span class="bolder-span">« Collège au cinéma »</span> et <span class="bolder-span">« Lycéens et Apprentis au cinéma »</span> sont des dispositifs nationaux d’éducation aux images, coordonnés par le <span class="bolder-span">Ministère de la Culture et l’Éducation Nationale</span>.<br>
+        La programmation est proposée lors d’une commission départementale entre les différents acteurs : la DSDEN, le coordinateur local Rencontre à la campagne, les cinémas et des professionnels de l’éducation.<br>
+        Les films sont sélectionnés en fonction de leur esthétique et de leur thématique. La volonté maîtresse est de faire découvrir des œuvres patrimoniales, aux thématiques importantes et/ou liées aux programmes scolaires, et, à partir du collège, en version originale.<br>
+        Les établissements participants bénéficient de <span class="bolder-span">trois séances</span> annuelles au tarif avantageux de <span class="bolder-span">2,50 euros par élève et par séance</span>.<br>
+    </p>
+    <h3 class="text-center color-grey">
+        Maternelle, École et Collège au cinéma
+    </h3>
+    <p class="color-grey justify">
+        Dans ce cadre, l’association assure, en plus de la <span class="bolder-span">projection</span>, une <span class="bolder-span">présentation</span> du film ainsi qu’une <span class="bolder-span">animation de fin de séance</span> autour de celui-ci.<br>
+        Nous profitons de ce temps d’échange pour amener des pistes de réflexion historiques, techniques, artistiques ou thématiques autour de l’œuvre projetée, afin que les élèves puissent <span class="bolder-span">découvrir ou mieux comprendre les enjeux de l’image</span> dans une société où elle prend de plus en plus de place.<br>
+
+        Les animations à destination des <span class="bolder-span">écoles maternelles et primaires</span> varient au cours des trois trimestres afin d’apprécier les films dans leur <span class="bolder-span">thématique</span>, puis leur <span class="bolder-span">esthétique</span> ou leur <span class="bolder-span">technique</span>, pour terminer sur une <span class="bolder-span">initiation à la création artistique</span>.
+        <span class="bolder-span">Les collégiens</span> sont quant à eux initiés au <span class="bolder-span">vocabulaire cinématographique</span> et à <span class="bolder-span">l’analyse filmique</span> dans l’objectif de les amener à <span class="bolder-span">développer leur esprit critique</span>.<br>
+    </p>
+    <h3 class="text-center color-grey">
+        DECOUVRIR LA PROGRAMMATION 2021-2022
+    </h3>
+    <div class="center-button">
+        <button type="button" class="btn btn-primary btn-lg education-button sco-button">
+            <a href="{% url 'seances:content' value=10 %}" class="no-color-link">Maternelle</a>
+        </button>
+        <button type="button" class="btn btn-primary btn-lg education-button sco-button">
+            <a href="{% url 'seances:content' value=11 %}" class="no-color-link">Ecole</a>
+        </button>
+        <button type="button" class="btn btn-primary btn-lg education-button sco-button">
+            <a href="{% url 'seances:content' value=12 %}" class="no-color-link">Collège 6e-5e</a>
+        </button>
+        <button type="button" class="btn btn-primary btn-lg education-button sco-button">
+            <a href="{% url 'seances:content' value=13 %}" class="no-color-link">Collège 4e-3e</a>
+        </button>
+    </div>
 {% endblock %}

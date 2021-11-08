@@ -669,6 +669,83 @@ footer {
     color: #FFFFFF;
 }
 
+/* properties for content pages */
 .smaller-p {
     font-size: 0.9em;
+}
+
+.color-grey {
+    color: #212529;
+}
+
+.bigger-ul {
+    font-size: 1.25em;
+}
+
+.justify {
+    text-align: justify;
+}
+
+/* buttons on education page */
+.center-button {
+    text-align: center;
+}
+
+.education-button {
+    background: url('../img/couleur-bleu-bondi.jpg') no-repeat center center fixed;
+    border: none;
+    width: 30%;
+}
+
+@media (max-width:1025px) {
+    .education-button {
+        height: 5em;
+        word-wrap: break-word;
+        white-space: normal;
+    }
+}
+
+@media (max-width:535px) {
+    .education-button {
+        height: 8em;
+        width: 45%;
+    }
+}
+
+/* animation when hovering */
+@media (min-width:800px) {
+    .education-button {
+        transition: transform .2s;
+    }
+
+    .education-button:hover {
+        transform: scale(1.5);
+    }
+}
+
+.no-color-link {
+    color: white;
+}
+
+.no-color-link:hover {
+    color: white;
+}
+
+@media (min-width:545px) {
+    .sco-button {
+        width: 20%;
+    }
+}
+
+@media (max-width:544px) {
+    .sco-button {
+        width: 24%;
+    }
+}
+
+@media (max-width:448px) {
+    .sco-button {
+        font-size: 0.8rem;
+        font-weight: bolder;
+    }
 }

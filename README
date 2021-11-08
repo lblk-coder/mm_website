@@ -1,3 +1,5 @@
-github token : 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
+Github repo :
 
-to push : https://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@github.com/lblk-coder/mm_website.git
+github token : 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
+git push https://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@github.com/lblk-coder/mm_website.git
+git pull https://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@github.com/lblk-coder/mm_website.git

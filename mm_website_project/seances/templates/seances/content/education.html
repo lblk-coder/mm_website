@@ -1,9 +1,17 @@
 {% extends 'seances/base.html' %}
 {% block content %}
 <h2 class="intro-text text-center">EDUCATION AUX IMAGES</h2>
-<p>
+<p class="color-grey justify">
     L’éducation par le cinéma est l’un des grands principes de l’association.<br>
     C’est pourquoi nous avons mis en place en 2017 notre service mobile dédié à l’éducation aux images : <span class="bolder-span">Louise.</span> Louise, c’est un camion qui se déplace à la demande sur tout le département pour mener des <span class="bolder-span">ateliers</span> et des <span class="bolder-span">interventions</span> en direction du jeune public, mais aussi des adolescents, des personnes âgées et handicapées, des détenu.e.s et des familles.<br>
     Dans cette même optique d’éducation, nous mettons en place, en lien avec l’inspection académique, des <span class="bolder-span">séances scolaires</span> qui entrent dans le cadre des dispositifs nationaux <span class="bolder-span">Maternelle</span>, <span class="bolder-span">Ecole</span>, et <span class="bolder-span">Collège au cinéma</span>, ainsi que des interventions au sein des établissements pour les Lycéens et Apprentis.<br>
 </p>
+<div class="center-button">
+<button type="button" class="btn btn-primary btn-lg education-button">
+    <a href="{% url 'seances:content' value=8 %}" class="no-color-link">LES ATELIERS DE LOUISE</a>
+</button>
+<button type="button" class="btn btn-primary btn-lg education-button">
+    <a href="{% url 'seances:content' value=9 %}" class="no-color-link">LES DISPOSITIFS SCOLAIRES</a>
+</button>
+</div>
 {% endblock %}
