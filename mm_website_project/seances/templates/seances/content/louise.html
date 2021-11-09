@@ -1,4 +1,37 @@
 {% extends 'seances/base.html' %}
 {% block content %}
-Ateliers de Louise
+{% load static %}
+
+    <h2 class="intro-text text-center">
+        QUI EST LOUISE ?
+    </h2>
+    <p class="color-grey justify">
+        Louise est une ciné-roulotte qui propose des  <span class="bolder-span">ateliers d’éducation aux images et de création</span> dans tout le département de l’Aveyron.
+    </p>
+    <h3 class="text-center color-grey">
+        Itinérante
+    </h3>
+    <p class="color-grey justify">
+        Elle peut prendre place dans les écoles, les accueils de loisir, les centres sociaux, les maisons de retraite et structures pour personnes handicapées, les festivals et autres moments festifs !
+    </p>
+    <h3 class="text-center color-grey">
+        Collaborative & Partagée
+    </h3>
+    <p class="color-grey justify">
+        Nos ateliers sont construits en <span class="bolder-span">collaboration</span> avec les structures qui nous accueillent et sont adaptés à leurs <span class="bolder-span">contraintes</span> et à leurs <span class="bolder-span">publics</span>.
+    </p>
+    <h3 class="text-center color-grey">
+        Pour tous
+    </h3>
+    <p class="color-grey justify">
+        Séniors, public en situation de handicap, élèves, familles, ados, publics empêchés. Nous allons à la rencontre de chacun.
+    </p>
+    <h2 class="intro-text text-center">
+        DECOUVRIR TOUS LES ATELIERS DE LOUISE ?
+    </h2>
+    <div class="center-button">
+        <button type="button" class="btn btn-primary btn-lg education-button sco-button louise-button">
+            <a href="{% static 'img/Mondes-et-Multitudes-Livret-Ateliers-2021.pdf' %}" download class="no-color-link">Télécharger la plaquette <br> des ateliers de Louise</a>
+        </button>
+    </div>
 {% endblock %}

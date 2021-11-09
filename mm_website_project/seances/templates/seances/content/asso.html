@@ -1,4 +1,56 @@
 {% extends 'seances/base.html' %}
 {% block content %}
-association
+{% load static %}
+
+    <h2 class="intro-text text-center">
+        QUI SOMMES-NOUS ?
+    </h2>
+    <p class="color-grey justify">
+        <span class="bolder-span">Mondes et Multitudes</span> est une association loi 1901 à but non lucratif de cinéma itinérant.    </p>
+    <p class="color-grey justify">
+        Depuis 2010, nos camions sillonnent les routes aveyronnaises pour promouvoir la culture et amener une expérience cinématographique de qualité en milieu rural, où les spectateurs ne peuvent pas avoir accès à un cinéma de proximité.    </p>
+    <p class="color-grey justify">
+        Proposer des <span class="bolder-span">rendez-vous conviviaux autour des films</span>, participer à la <span class="bolder-span">vie culturelle de nos campagnes</span> et défendre le <span class="bolder-span">cinéma en zone rurale</span>, tels sont les principaux principes de notre circuit itinérant.    </p>
+    <br>
+    <div class="center-button">
+        <button type="button" class="btn btn-primary btn-lg education-button sco-button louise-button">
+            <a href="{% url 'seances:listing' %}" class="no-color-link">Découvrir <br>la programmation</a>
+        </button>
+    </div>
+    <br>
+    <p class="color-grey justify">
+        L’association se montre également particulièrement soucieuse du <span class="bolder-span">jeune public</span>. Nos petits spectateurs ont soif d’apprendre et s’intéressent facilement à tout ce qui les entoure.    </p>
+    <p class="color-grey justify">
+        C’est pourquoi nous avons mis en place en 2017 notre ciné-roulotte: <span class="bolder-span">Louise</span>. Service dédié à <span class="bolder-span">l’éducation aux images</span>, Louise se déplace à la demande sur tout le département pour mener des <span class="bolder-span">ateliers</span> et des <span class="bolder-span">interventions</span> en direction du jeune public, mais aussi des adolescents, des personnes âgées et handicapées, des détenu.e.s et des familles.
+    </p>
+    <br>
+    <div class="center-button">
+        <button type="button" class="btn btn-primary btn-lg education-button sco-button louise-button">
+            <a href="{% url 'seances:content' value=8 %}" class="no-color-link">Découvrir <br>Louise</a>
+        </button>
+    </div>
+    <br>
+    <p class="color-grey justify">
+        Dans cette même optique d’éducation aux images et au cinéma, nous mettons également en œuvre, en lien avec l’inspection académique, des <span class="bolder-span">séances scolaires</span> qui entrent dans le cadre des dispositifs nationaux de <span class="bolder-span">Maternelle, Ecole, et Collège au cinéma</span>, ainsi que des interventions au sein des établissements pour les <span class="bolder-span">Lycéens et Apprentis</span>.
+    </p>
+    <br>
+    <div class="center-button">
+        <button type="button" class="btn btn-primary btn-lg education-button sco-button louise-button">
+            <a href="{% url 'seances:content' value=9 %}" class="no-color-link">Découvrir <br>les dispositifs scolaires</a>
+        </button>
+    </div>
+    </br>
+    <p class="color-grey justify">
+        Enfin, chaque année, l’association organise le festival de cinéma jeune public : Ouvre l’œil!
+    </p>
+    <br>
+    <div class="center-button">
+        <button type="button" class="btn btn-primary btn-lg education-button sco-button louise-button">
+            <a href="{% url 'seances:content' value=17 %}" class="no-color-link">Découvrir <br>le festival</a>
+        </button>
+    </div>
+    </br>
+    <p class="color-grey justify">
+        En 2020, 53 communes ont décidé de nous faire confiance. Pourquoi pas la vôtre?
+    </p>
 {% endblock %}

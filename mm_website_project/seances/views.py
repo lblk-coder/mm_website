@@ -109,6 +109,7 @@ def content(request, value):
         return render(request, 'seances/content/partenaires.html')
     elif int(value) == 4:
         return render(request, 'seances/content/contact.html')
+    # this page below is not active, there is no content yet on it
     elif int(value) == 5:
         return render(request, 'seances/content/emploi.html')
     elif int(value) == 6:
@@ -123,8 +124,8 @@ def content(request, value):
         return render(request, 'seances/content/mater.html')
     elif int(value) == 11:
         return render(request, 'seances/content/ecole.html')
-#    elif int(value) == 12:
-#        return render(request, 'seances/content/seances-militantes.html')
+    elif int(value) == 12:
+        return render(request, 'seances/content/college65.html')
     elif int(value) == 13:
         return render(request, 'seances/content/louise.html')
     elif int(value) == 14:
@@ -135,3 +136,5 @@ def content(request, value):
         return render(request, 'seances/content/lyceens-apprentis.html')
     elif int(value) == 17:
         return render(request, 'seances/content/festival.html')
+    elif int(value) == 18:
+        return render(request, 'seances/content/college43.html')

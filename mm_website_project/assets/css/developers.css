@@ -749,3 +749,23 @@ footer {
         font-weight: bolder;
     }
 }
+
+.bigger-text {
+    font-size: 1.65em;
+}
+
+/* specific css for button on louise page */
+.louise-button {
+    height: 4em;
+    width: 39%;
+}
+
+@media (max-width:694px) {
+    .louise-button {
+        height: 7em;
+    }
+}
+
+.center-card {
+    text-align: center;
+}

@@ -1,66 +1,89 @@
 {% extends 'seances/base.html' %}
 {% block content %}
+{% load static %}
+<div class="container-fluid">
 <h3 class="text-center color-grey">
     ECOLE ET CINEMA
 </h3>
 <p>
-    <span class="bolder-span">TRIMESTRE 1</span>
+    <span class="bolder-span bigger-text">TRIMESTRE 1</span>
 </p>
-<div class="container-fluid">
-    {% for seance in seances %}
-    <div class="row seance-listing">
-            <div class="col-12">
-                <h2>le {{ seance.date }} à {{ seance.lieu }}</h2>
-                    {% if seance.plein_air %}
-                    <img src="{% static 'img/macaron_plein_air_NOIR_AVEC_TEXTE.png' %}" alt="Séance en plein air" title="Séance en plein air" class="macaron">
-                    {% endif %}
-                    {% if seance.festival %}
-                    <img src="{% static 'img/macaron_ouvre_l_oeil_NOIR_AVEC_TEXTE.png' %}" alt="Séance du festival Ouvre l'Œil" title="Séance du festival Ouvre l'Œil" class="macaron">
-                    {% endif %}
-                    {% if seance.mois_du_doc %}
-                    <img src="{% static 'img/macaron_mois_du_doc_NOIR_AVEC_TEXTE.png' %}" alt="Séance du festival Mois du doc" title="Séance du festival Mois du doc" class="macaron">
-                    {% endif %}
-            </div> <!-- end of col-12 -->
-    </div> <!-- end of row -->
-{% for projection in seance.projection_set.all|dictsort:"heure" %}
+
     <div class="row seance-listing">
         <div class="col-12 col-md-4">
-            {% if projection.film.photo %}
-            <img class="img-listing" src="{{ projection.film.photo.url }}" alt="{{ projection.film.titre }}">
-            {% endif %}
+            <img class="img-listing" src="{% static 'img/en_sortant_ecole.jpg' %}" alt="en sortant de l'école">
         </div>
         <div class="card col-12 col-md-8 bg-transparent card-listing-page">
             <div class="card-body">
-                <h3 class="card-title">{{ projection.heure }} :
-                    <a class="film-title-listing" href="{% url 'seances:detail' film_id=projection.film.id %}">
-                        {{ projection.film.titre }}
-                    </a>
+                <h3 class="card-title">
+                    EN SORTANT DE L'ÉCOLE
                 </h3>
                 <p class="card-text">
                     <span class="bold-card-presentation">
-                        {% if projection.film.real %} De {{ projection.film.real }} <br> {% endif %}
-                        {% if projection.film.acteurs %} Avec {{ projection.film.acteurs }} <br> {% endif %}
-                        {% if projection.film.genre %} {{ projection.film.genre }},{% endif %}
-                        {% if projection.film.annee %} {{ projection.film.annee }},{% endif %}
-                        {% if projection.film.pays %} {{ projection.film.pays }},{% endif %}
-                        {% if projection.film.duree %} {{ projection.film.duree }} minutes <br> {% endif %}
-                        {% if projection.film.age %} À partir de {{ projection.film.age }} ans <br> {% endif %}
+                        De Marie Larrivé, Camille Authouart, Lila Peuscet… <br>
+                        Programme de courts-métrages, animation, France, 2014, 39 min. <br>
+                        À partir de 4 ans <br>
                     </span>
                     <br>
-                    {% if projection.film.synopsis %} {{ projection.film.synopsis }} <br> {% endif %}
+                    Une collection de 13 courts métrages d’animation de 3 minutes, qui se propose d’associer poétiquement, dans la liberté artistique la plus exigeante, 13 poèmes de Prévert à l’univers graphique de jeunes réalisateurs tout juste sortis des écoles d'animation françaises. <br>
                     <br>
-                    <span class="bold-card-presentation">
-                        {% if projection.animation %} Animation : {{ projection.animation }} <br> {% endif %}
-                        {% if projection.tarif %} Tarif :  {{ projection.tarif }} € <br> {% endif %}
-                        {% if projection.tarif_reduit %} Tarif réduit :  {{ projection.tarif_reduit }} € <br> {% endif %}
-                    </span>
                 </p>
             </div> <!-- end of card-body -->
         </div> <!-- end of card -->
     </div> <!-- end of row -->
-{% endfor %}
 
-{% endfor %}
+<p>
+    <span class="bolder-span bigger-text">TRIMESTRE 2</span>
+</p>
+
+    <div class="row seance-listing">
+        <div class="col-12 col-md-4">
+            <img class="img-listing" src="{% static 'img/kerity.jpg' %}" alt="Kerity">
+        </div>
+        <div class="card col-12 col-md-8 bg-transparent card-listing-page">
+            <div class="card-body">
+                <h3 class="card-title">
+                    KERITY, LA MAISON DES CONTES
+                </h3>
+                <p class="card-text">
+                    <span class="bold-card-presentation">
+                        De Dominique Monféry <br>
+                        Animation, France, 2009, 1h20 <br>
+                        À partir de 4 ans <br>
+                    </span>
+                    <br>
+                        Natanaël a bientôt 6 ans mais il ne sait toujours pas lire… Lorsque sa tante Eléonore lui lègue sa bibliothèque contenant des centaines de livres, Natanaël est très déçu ! Pourtant chacun de ces contes va livrer un merveilleux secret : à la nuit tombée les petits héros de ces histoires sortent des livres…
+                    <br>
+                </p>
+            </div> <!-- end of card-body -->
+        </div> <!-- end of card -->
+    </div> <!-- end of row -->
+
+
+<p>
+    <span class="bolder-span bigger-text">TRIMESTRE 3</span>
+</p>
+
+    <div class="row seance-listing">
+
+        <div class="card col-12 col-md-8 bg-transparent card-listing-page">
+            <div class="card-body">
+                <h3 class="card-title">
+                    PEAU D'ÂNE
+                </h3>
+                <p class="card-text">
+                    <span class="bold-card-presentation">
+                        De Jacques Demy <br>
+                        Comédie musicale, romance, France, 1970, 1h25 <br>
+                        À partir de 6 ans <br>
+                    </span>
+                    <br>
+                        Le roi bleu promet à sa reine mourante de ne se remarier qu’avec une femme plus belle qu’elle. Des années plus tard, il décide d’épouser sa fille car elle seule est capable de rivaliser en beauté avec son épouse adorée.
+                    <br>
+                </p>
+            </div> <!-- end of card-body -->
+        </div> <!-- end of card -->
+    </div> <!-- end of row -->
 
 </div> <!-- end of container of the page -->
 {% endblock %}
